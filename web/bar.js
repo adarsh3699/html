@@ -1,10 +1,10 @@
-let logo = '<a href="index.html" id="logo"><img src="logo.png" alt="Error" height="50px"><div><span id="adarsh">Adarsh </span>Suman</div></a>';
-let desktopMenu = '<div id="desktopMenu">  <a href="index.html">Home</a> <a href="about.html">About</a> <a href=""> Contact</a>  </div>';
+let logo = '<div id="logo"><a href="index.html"><img src="logo.png" height="50px"><div><span id="adarsh">Adarsh </span>Suman</div></a></div>';
+let desktopMenu = '<div id="desktopMenu">  <a href="index.html">Home</a> <a href="about.html">About</a> <a href="contact.html">Contact</a>  </div>';
 let social = '<div id="social"><a href="https://www.instagram.com/_adarsh.s/" target="_blank"><img src="insta.png" height="22px"></a><a href="https://www.youtube.com/channel/UCkdSVbjY4sS1I7hw9ZJMdew" target="_blank"><img src="youtube.png" alt="Error" height="20px"></a></div>';
 let mobileIcon = '<div id="mobileIcon"><img src="menu.png" /></div>';
-let mobileMenu = '<div id="mobileMenu"><a href="index.html">Home</a><a href="about.html">About</a><a href=""> Contact</a></div>'
+let mobileMenu = '<div id="mobileMenu"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>'
 
-let footMemu = '<div id="footMemu"><div><a href="index.html">Home</a></div><div><a href="about.html">About</a></div><div><a href="">Contact</a></div></div>'
+let footMemu = '<div id="footMemu"><div><a href="index.html">Home</a></div><div><a href="about.html">About</a></div><div><a href="contact.html">Contact</a></div></div>'
 let footLogo ='<div id="footLogo"><img src="logo.png"><div>© 2022-25 Adarsh Creation</div><div>Developed by Adarsh Suman</div></div>'
 let footSocial ='<div id="footSocial"><a href="mailto:adarsh3699@gmail.com" target="_blank"><img src="google.png">adarsh3699<div></div></a><a href="https://www.instagram.com/_adarsh.s/" target="_blank"><img src="insta.png"  height="24px"><div>Instagram</div></a><a href="https://www.youtube.com/channel/UCkdSVbjY4sS1I7hw9ZJMdew" target="_blank"><img src="youtube.png" height="23px"><div>&#160 YouTube</div></a></div>'
 
@@ -31,7 +31,7 @@ $('#mobileIcon').on("click", function(e) {
 
 $(document).on("click", function(e){
     console.log("asdfg")
-    document.getElementById("mobileMenu").classList.remove("show");
+    $('#mobileMenu').removeClass("show");
 });
 
 $(document).ready(function(){
@@ -54,3 +54,20 @@ $(document).ready(function(){
 //         document.getElementById("mobileMenu").classList.remove("show");
 //     } 
 // }
+
+$('#send').on("click", function() {
+    let email = $('#email').val();
+    let text = $('.textArea').val();
+    
+        if (email === "") {
+            $("#confirmEmail").text('Please enter your email')
+        } else{
+            $("#confirmEmail").text('')
+        }
+        if (text === "") {
+            $('#confirmMsg').text('Please enter your msg')
+        } else {
+            $("#confirmMsg").text('')
+        }
+    
+})

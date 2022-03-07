@@ -6,6 +6,13 @@ body {
     overflow-x: auto;
 }
 
+#background {
+    background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+ }
+
 /*------------------bar-------------------*/
 #bar {
     position: fixed;
@@ -32,12 +39,13 @@ a {
 }
 
 #logo {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center; /*vertical align */
-    justify-content: flex-start; /*horizontal align */
     width: 33%;
+}
+
+#logo a{
+    display: flex;
+    align-items: center;
+    width: fit-content;
 }
 
 #adarsh {
@@ -182,12 +190,15 @@ a {
 @media screen and (max-width: 931px) {
     #footMemu {
         display: block;
+        width: 32%;
     }
 
     #footMemu div {
         padding-bottom: 10px;
     }
-
+    #footLogo {
+        font-size: 10px;
+    }
     #footLogo img{
         padding-top: 20px;
         height: 60px;
