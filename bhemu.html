@@ -5,7 +5,7 @@
 </head>
 
 <body onscroll="handleScroll()">
-    <div id="navBar">
+    <!-- <div id="navBar">
         <div><img src="logo.png" alt="bhemu" /></div>
         <div><a href="https://www.google.com" target="_blank">Google</a></div>
         <div>Contact</div>
@@ -99,6 +99,26 @@
             console.log("ruk bhai")
         }
 
+    </script> -->
+
+    <input type="text" id="box">
+    <ul id="name">
+        <li>bhemu</li>
+        <li>kauaa</li>
+        <li>aman</li>
+        <li>adarsh</li>
+        <li>crow</li>
+    </ul>
+    <script src="web/javascript/jquery.js"></script>
+    <script>
+        $('#box').keyup(function() {
+            let search = $(this).val();
+            console.log(search);
+            $("#name li").removeClass ('highlight');
+            if (search != '') {
+                $("#name li:contains(" + search + ")").addClass('highlight');
+            }
+        })
     </script>
 </body>
 

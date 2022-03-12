@@ -14,7 +14,7 @@ let footSocial ='<div id="footSocial"><a href="mailto:adarsh3699@gmail.com" targ
 $('#bar').html('<div id="topBar">' + logo + desktopMenu + social + mobileIcon + '</div>' + mobileMenu);
 $('#bottomBar').html(footMemu + footLogo + footSocial);
 
-let flag = true;
+let flag = false;
 $('#mobileIcon').on("click", function(e) {
     e.stopPropagation(); // this will not call any other event, applied on its parent
 

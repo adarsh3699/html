@@ -176,3 +176,7 @@ hr {
     height: fit-content;
     padding-right: 15px;
 }
+
+.highlight{
+    background-color: red;
+}
