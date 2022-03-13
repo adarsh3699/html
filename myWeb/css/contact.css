@@ -54,18 +54,22 @@ body {
     background-color: rgb(61, 57, 57);
     border-radius: 5px;
     width: 60%;
-    padding-left: 30px;
+    padding-left: 50px;
 }
 
 .subTitle {
-padding:10px 0px ;
+padding-top: 20px;
+margin-bottom: 10px;
 font-size: 25px;
+border-bottom: 1px solid #f1f1f1;
+width: fit-content;
 }
 
 #contact a {
     display: flex;
     align-items: center;
-    padding: 5px 0px;
+    padding: 7px 0px;
+    width: fit-content;
 }
 
 #contact img {
