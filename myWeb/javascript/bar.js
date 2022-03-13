@@ -32,7 +32,7 @@ $(document).on("click", function(e){
 $(document).ready(function(){
     $('#loaderBack').css('display', 'none');
     
-    $('.disclamer').remove();
+    $('.disclaimer').remove();
 });
 
 $('#send').on("click", function() {
