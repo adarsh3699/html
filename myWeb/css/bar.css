@@ -175,10 +175,6 @@ a {
     width: 33.5%;
 }
 
-#footSocial img {
-    height: 18px;
-}
-
 #footSocial a {
     display: flex;
     align-items: center;

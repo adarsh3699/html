@@ -47,6 +47,12 @@ body {
     width: 100px;
     height: 30px;
     border-radius: 2px;
+    font-size: 15px;
+}
+
+.disableBtn {
+    background-color: gray !important;
+    pointer-events: none;
 }
 
 #contact {
@@ -76,9 +82,14 @@ width: fit-content;
     height: 30px;
 }
 
+#git {
+    fill: white;
+}
+
 #contact div div {
     padding-left: 10px;
 }
+
 /*------------------mWebBar-------------------*/
 @media screen and (max-width: 700px) {
     #title {

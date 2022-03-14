@@ -26,21 +26,7 @@ color: #f1f1f1;
     font-weight: 500;
 }
 
-#title {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    width: 50%;
-    margin: auto;
-    padding: 7px 0px !important;
-    text-align: center;
-    background-color: rgba(24, 23, 23, 0.781);
-    border-radius: 5px;
-    font-size: 22px ;
-    font-weight: bold;
-}
-
-#content {
+#aboutMe {
     margin: 10px auto;;
     background-color: rgb(61, 57, 57);
     border-radius: 5px;
@@ -48,6 +34,99 @@ color: #f1f1f1;
     padding: 10px;
 }
 
+.title {
+    width: fit-content;
+    padding: 7px 10px !important;
+    margin-bottom: 10px;
+    /* text-align: center; */
+    background-color: rgba(24, 23, 23, 0.781);
+    border-radius: 5px;
+    font-size: 22px ;
+    font-weight: bold;
+}
+
+/*-----blank page animation-------*/
+.welcome_msg
+{		
+    text-align: left;
+    font-size: 120%;
+    letter-spacing: 2px;
+}
+
+.line-1
+{					    
+    width: 150px;	    
+    border-right: 2px solid rgba(255,255,255,.75);	    
+    white-space: nowrap;
+    overflow: hidden;	 
+    font-family: mech;
+}
+
+.line-1 b
+{
+    color: #5cbbce;
+}
+
+.line-1 a
+{
+    color: #f3246f;
+    text-decoration: none;
+}
+
+/* Animation */
+.anim-typewriter
+{
+     animation: typewriter 2s steps(30) normal,
+                blinkTextCursor .7s ease-in-out infinite
+}
+
+.anim-typewriter-remove
+{
+      animation: typewriter_remove 2s steps(30) normal both,
+             blinkTextCursor .7s ease-in-out infinite
+}
+
+.anim-typewriter2
+{
+     animation: typewriter2 3s steps(30) normal,
+                blinkTextCursor .7s ease-in-out infinite
+}
+
+.anim-typewriter-remove2
+{
+      animation: typewriter_remove2 3s steps(30) normal both,
+             blinkTextCursor .7s ease-in-out infinite
+}
+
+@keyframes typewriter
+{
+    from{width: 0;}
+    to{width: 150px;}
+}
+
+@keyframes typewriter_remove
+{
+    from{width: 150px;}
+    to{width: 0px;}
+}
+
+@keyframes typewriter2
+{
+    from{width: 0;}
+    to{width: 250px;}
+}
+
+@keyframes typewriter_remove2
+{
+    from{width: 250px;}
+    to{width: 0px;}
+}
+
+@keyframes blinkTextCursor
+{
+    from{border-right-color: rgba(255,255,255,.75);}
+    to{border-right-color: transparent;}
+}
 
 /* ...............................mWeb............................. */
 
@@ -58,11 +137,11 @@ color: #f1f1f1;
         top: 10%;
     }
 
-    #title {
+    .title {
         width: 60%;
     }
     
-    #content {
+    #aboutMe {
         width: 80%;
     }
 }

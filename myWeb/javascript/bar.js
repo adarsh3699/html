@@ -6,7 +6,7 @@ let mobileMenu = '<div id="mobileMenu"><a href="index.html">Home</a><a href="abo
 
 let footMemu = '<div id="footMemu"><div><a href="index.html">Home</a></div><div><a href="about.html">About</a></div><div><a href="contact.html">Contact</a></div></div>'
 let footLogo ='<div id="footLogo"><img src="image/logo.png"><div>© 2022-25 (Version 0.5)</div><div>Developed by Adarsh Suman</div></div>'
-let footSocial ='<div id="footSocial"><a href="mailto:adarsh3699@gmail.com" target="_blank"><img src="image/google.png">adarsh3699<div></div></a><a href="https://www.instagram.com/_adarsh.s/" target="_blank"><img src="image/insta.png"  height="24px"><div>Instagram</div></a><a href="https://www.youtube.com/channel/UCkdSVbjY4sS1I7hw9ZJMdew" target="_blank"><img src="image/youtube.png" height="23px"><div>&#160 YouTube</div></a></div>'
+let footSocial ='<div id="footSocial"><a href="mailto:adarsh3699@gmail.com" target="_blank"><img src="image/google.png" height = "22px">adarsh3699<div></div></a><a href="https://www.instagram.com/_adarsh.s/" target="_blank"><img src="image/insta.png"  height="19px"><div>Instagram</div></a><a href="https://www.youtube.com/channel/UCkdSVbjY4sS1I7hw9ZJMdew" target="_blank"><img src="image/youtube.png" height="18px"><div>&#160 YouTube</div></a></div>'
 
 
 $('#bar').html('<div id="topBar">' + logo + desktopMenu + social + mobileIcon + '</div>' + mobileMenu);
@@ -44,9 +44,15 @@ $('#send').on("click", function() {
     } else{
         $("#confirmEmail").text('')
     }
+    
     if (text === "") {
         $('#confirmMsg').text('Please enter your msg')
     } else {
         $("#confirmMsg").text('')
+    }
+
+    if (email !== "" && text !== "") {
+        $("#send").addClass("disableBtn");
+        console.log("mast");
     }
 });
