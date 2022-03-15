@@ -71,17 +71,17 @@ $(document).ready(function() {
 
         setTimeout(function()
         {
-            $('.line-1').html("And i'm not a <b>Bhemu</b> ").width('550px').addClass('anim-typewriter2');
+            $('.line-1').html("And i'm not a <b>Bhemu</b> ").addClass('anim-typewriter2');
         }, 10500);
 
         setTimeout(function()
         {
             $('.line-1').addClass('anim-typewriter-remove2');			
         }, 15000);
-        
+
         setTimeout(function()
         {
-            $('.line-1').html("").removeClass('anim-typewriter').removeClass('anim-typewriter2').removeClass('anim-typewriter-remove').removeClass('anim-typewriter-remove2').width('690px');
+            $('.line-1').html("").removeClass('anim-typewriter').removeClass('anim-typewriter2').removeClass('anim-typewriter-remove').removeClass('anim-typewriter-remove2');
         }, 18000);
     }
 
