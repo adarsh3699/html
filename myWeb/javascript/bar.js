@@ -56,3 +56,9 @@ $('#send').on("click", function() {
         console.log("mast");
     }
 });
+
+/* Animation */
+
+$(document).ready(function() {
+    $(".anim-typewriter2").delay(40000).addClass("anim-typewriter2"); 
+})

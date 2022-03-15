@@ -48,9 +48,12 @@ color: #f1f1f1;
 /*-----blank page animation-------*/
 .welcome_msg
 {		
-    text-align: left;
-    font-size: 120%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     letter-spacing: 2px;
+    font-size: 23px;
+    font-weight: 500;
 }
 
 .line-1
@@ -67,14 +70,8 @@ color: #f1f1f1;
     color: #5cbbce;
 }
 
-.line-1 a
-{
-    color: #f3246f;
-    text-decoration: none;
-}
-
 /* Animation */
-.anim-typewriter
+/* .anim-typewriter
 {
      animation: typewriter 2s steps(30) normal,
                 blinkTextCursor .7s ease-in-out infinite
@@ -84,7 +81,7 @@ color: #f1f1f1;
 {
       animation: typewriter_remove 2s steps(30) normal both,
              blinkTextCursor .7s ease-in-out infinite
-}
+} */
 
 .anim-typewriter2
 {
@@ -135,10 +132,6 @@ color: #f1f1f1;
     #myIntro {
         font-size: 35px;
         top: 10%;
-    }
-
-    .title {
-        width: 60%;
     }
     
     #aboutMe {

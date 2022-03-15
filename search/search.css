@@ -14,14 +14,3 @@ body{
     width: 500px;
     font-size: 20px;
 }
-
-#data div{
-    padding: 3px 0px;
-    border-bottom: 2px solid black;
-    display: none;
-}
-
-.highlight {
-    background-color: yellowgreen;
-    display: block !important;
-}
