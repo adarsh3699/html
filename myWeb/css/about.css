@@ -3,9 +3,12 @@ body{
 color: #f1f1f1;
 }
 
+/*-----blank page animation-------*/
 #myIntro {
-    text-align: center;
-    font-size: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size: 70px; */
     font-weight: 900;
     text-shadow: 2px 2px 4px #000000;
     color: #f1f1f1;
@@ -15,11 +18,95 @@ color: #f1f1f1;
     margin-bottom: 20px;
     padding: 20px;
     width: 90%;
+    height: 50px;
+    letter-spacing: 2px;
 }
 
-#myIntro span {
-    color: rgba(255,0,0, .8);
+/* .welcome_msg
+{		   
+    background-color: rebeccapurple;
+} */
+
+.line-1
+{		
+    /* text-align: left; */
+    /* background-color: red; */
+    margin: unset;
+    padding: unset;			    
+    width: 690px;
+    border-right: 2px solid rgba(255,255,255,.75);	    
+    white-space: nowrap;
+    overflow: hidden;	 
+    font-family: mech;
+    font-size: 50px;
 }
+
+.line-1 b
+{
+    color: #5cbbce;
+}
+
+.line-1 a
+{
+    color: #f3246f;
+    text-decoration: none;
+}
+
+/* Animation */
+.anim-typewriter
+{
+     animation: typewriter 4s steps(30) normal,
+                blinkTextCursor .7s ease-in-out infinite
+}
+
+.anim-typewriter-remove
+{
+      animation: typewriter_remove 3.8s steps(30) normal both,
+             blinkTextCursor .7s ease-in-out infinite
+}
+
+.anim-typewriter2
+{
+     animation: typewriter2 3s steps(30) normal,
+                blinkTextCursor .7s ease-in-out infinite
+}
+
+.anim-typewriter-remove2
+{
+      animation: typewriter_remove2 3s steps(30) normal both,
+             blinkTextCursor .7s ease-in-out infinite
+}
+
+@keyframes typewriter
+{
+    from{width: 0;}
+    to{width: 690px;}
+}
+
+@keyframes typewriter_remove
+{
+    from{width: 690px;}
+    to{width: 0px;}
+}
+
+@keyframes typewriter2
+{
+    from{width: 0;}
+    to{width: 550px;}
+}
+
+@keyframes typewriter_remove2
+{
+    from{width: 550px;}
+    to{width: 0px;}
+}
+
+@keyframes blinkTextCursor
+{
+    from{border-right-color: rgba(255,255,255,.75);}
+    to{border-right-color: transparent;}
+}
+
 
 #bhemu {
     font-size: 23px;
@@ -45,86 +132,6 @@ color: #f1f1f1;
     font-weight: bold;
 }
 
-/*-----blank page animation-------*/
-.welcome_msg
-{		
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    letter-spacing: 2px;
-    font-size: 23px;
-    font-weight: 500;
-}
-
-.line-1
-{					    
-    width: 150px;	    
-    border-right: 2px solid rgba(255,255,255,.75);	    
-    white-space: nowrap;
-    overflow: hidden;	 
-    font-family: mech;
-}
-
-.line-1 b
-{
-    color: #5cbbce;
-}
-
-/* Animation */
-/* .anim-typewriter
-{
-     animation: typewriter 2s steps(30) normal,
-                blinkTextCursor .7s ease-in-out infinite
-}
-
-.anim-typewriter-remove
-{
-      animation: typewriter_remove 2s steps(30) normal both,
-             blinkTextCursor .7s ease-in-out infinite
-} */
-
-.anim-typewriter2
-{
-     animation: typewriter2 3s steps(30) normal,
-                blinkTextCursor .7s ease-in-out infinite
-}
-
-.anim-typewriter-remove2
-{
-      animation: typewriter_remove2 3s steps(30) normal both,
-             blinkTextCursor .7s ease-in-out infinite
-}
-
-@keyframes typewriter
-{
-    from{width: 0;}
-    to{width: 150px;}
-}
-
-@keyframes typewriter_remove
-{
-    from{width: 150px;}
-    to{width: 0px;}
-}
-
-@keyframes typewriter2
-{
-    from{width: 0;}
-    to{width: 250px;}
-}
-
-@keyframes typewriter_remove2
-{
-    from{width: 250px;}
-    to{width: 0px;}
-}
-
-@keyframes blinkTextCursor
-{
-    from{border-right-color: rgba(255,255,255,.75);}
-    to{border-right-color: transparent;}
-}
-
 /* ...............................mWeb............................. */
 
 /*tablet*/
@@ -147,3 +154,5 @@ color: #f1f1f1;
     }
 
 }
+
+/* ...............................mAnimation............................. */

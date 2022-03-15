@@ -21,5 +21,3 @@ $('#inputBox').on("keyup", function(e){
         $("#data").html("");
     }
 });
-//https://api.coindesk.com/v1/bpi/currentprice.json
-//https://api.github.com/users/adarsh3699

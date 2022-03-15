@@ -58,7 +58,39 @@ $('#send').on("click", function() {
 });
 
 /* Animation */
-
 $(document).ready(function() {
-    $(".anim-typewriter2").delay(40000).addClass("anim-typewriter2"); 
+    function loop()
+    {
+
+        $('.line-1').html("My name is <b>Adarsh</b> <a>Suman</a>").addClass('anim-typewriter');
+
+        setTimeout(function()
+        {
+            $('.line-1').addClass('anim-typewriter-remove');
+        }, 6000);
+
+        setTimeout(function()
+        {
+            $('.line-1').html("And i'm not a <b>Bhemu</b> ").width('550px').addClass('anim-typewriter2');
+        }, 10500);
+
+        setTimeout(function()
+        {
+            $('.line-1').addClass('anim-typewriter-remove2');			
+        }, 15000);
+        
+        setTimeout(function()
+        {
+            $('.line-1').html("").removeClass('anim-typewriter').removeClass('anim-typewriter2').removeClass('anim-typewriter-remove').removeClass('anim-typewriter-remove2').width('690px');
+        }, 18000);
+    }
+
+    loop();
+
+    //repeating the animation
+    setInterval(function()
+    {
+        loop();
+    }, 18500);
+
 })
