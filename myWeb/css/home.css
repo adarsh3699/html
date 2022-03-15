@@ -96,26 +96,33 @@
     font-weight: 900;
     text-shadow: 2px 2px 4px #000000;
     color: #f1f1f1;
-    display: flex;
-    align-items: center;
+    /* background-color: blue; */
     z-index: 5;
-}
-
-#myImg {
-    height: 200px;
-    border-radius: 100%;
-    margin-right: 20px;
 }
 
 #welcome span {
     color: rgba(255,0,0, .8);
 }
 
-#bhemu {
+.bhemu {
     font-size: 23px;
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;	   
+  
 }
 
+.anim-typewriter
+{
+     animation: typewriter 4s steps(30) normal,
+                blinkTextCursor .7s ease-in-out infinite
+}
+
+@keyframes typewriter
+{
+    from{width: 0;}
+    to{width: 85%;}
+}
 
 /* ...............................mWeb............................. */
 
@@ -128,21 +135,15 @@
 }
 
 @media screen and (max-width: 700px) {
-    #content {
-        text-align: center;
-    }
 
     #welcome {
-        top: 20%;
-        /* position: absolute; */
-        /* transform: none; */
-        display: block;
-        font-size: 30px;
+        font-size: 40px;
+        text-align: start;
+        width: 55%;
     }
 
-    #myImg {
-        height: 150px;
-        margin-right: unset;
-        margin-top: 80px;
-    }  
+    .bhemu {
+        font-size: 15px;
+    }
+
 }
