@@ -41,7 +41,7 @@ color: #f1f1f1;
     text-decoration: none;
 }
 
-/* Animation */
+/*----------------Animation--------------- */
 .anim-typewriter
 {
      animation: typewriter 4s steps(30) normal,
@@ -97,46 +97,57 @@ color: #f1f1f1;
     to{border-right-color: transparent;}
 }
 
-/* ...............................mAnimation............................. */
-/* @media screen and (max-width: 750px) {
-
-
-} */
-
-/* ...............................mAnimation_End............................. */
-#aboutMe {
-    margin: 10px auto;;
+/*----------------Animation_End--------------- */
+.aboutBox {
+    margin: 10px auto;
     background-color: rgb(61, 57, 57);
     border-radius: 5px;
-    width: 70%;
+    width: 80%;
     padding: 10px;
 }
 
 .title {
-    width: fit-content;
-    padding: 7px 10px !important;
-    margin-bottom: 10px;
-    /* text-align: center; */
+    /* width: 280px; */
+    padding: 7px 10px;
+    margin-bottom: 5px;
     background-color: rgba(24, 23, 23, 0.781);
     border-radius: 5px;
     font-size: 22px ;
     font-weight: bold;
 }
 
-/* ...............................mWeb............................. */
+.img_text {
+    display: flex;
+    font-size: 18px;
+}
+ #logoMoblie {
+    display: none;
+ }
 
+.text_img {
+    justify-content: space-between;
+}
+
+.img_text img {
+    border-radius: 5px;
+}
+
+.img_text div {
+    margin-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+/* ...............................mWeb............................. */
 /*tablet*/
 @media screen and (max-width: 1150px) {
-    /* #myIntro {
-        font-size: 35px;
-    } */
-    
-    #aboutMe {
-        width: 80%;
+    .aboutBox {
+        width: 90%;
     }
 }
 
 @media screen and (max-width: 750px) {
+    /*----------------mWeb_Animation--------------- */
      #myIntro {
         width: 85%;
         margin-top: 60px;
@@ -176,9 +187,20 @@ color: #f1f1f1;
     {
         from{width: 285px;}
         to{width: 0px;}
-    }    
+    }
 
+    /*----------------mWeb_Animation_End--------------- */
+    .img_text {
+        display: block;
+        text-align: center;
+    }
+
+    #logoMoblie{
+        display: inline;
+        justify-content: center;
+    }
+
+    #logoPc {
+        display: none;
+    }
 }
-
-
-

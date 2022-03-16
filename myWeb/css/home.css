@@ -129,7 +129,6 @@
 /*tablet*/
 @media screen and (max-width: 1150px) {
     #welcome {
-        font-size: 35px;
         top: 18%;
     }
 }
@@ -138,8 +137,9 @@
 
     #welcome {
         font-size: 40px;
-        text-align: start;
-        width: 55%;
+        margin: auto;
+        /* text-align: start; */
+        width: fit-content;
     }
 
     .bhemu {
