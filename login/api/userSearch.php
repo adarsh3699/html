@@ -11,8 +11,9 @@
             if (@is_array($data)) {
                 //our logic
                 $userName = $data["userName"];
+                $password = $data["password"];
                 if ($userName != "") {
-                    $query = "SELECT * FROM userSearch WHERE userName = '" . $userName . "'";
+                    $query = "SELECT * FROM userSearch WHERE userName = '$userName' AND password = '$password'";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
                         $temp = array();
                         while ($array = @mysqli_fetch_assoc($queryRun)) {
@@ -20,13 +21,20 @@
                         }
                         $resp["statusCode"] = 200;
                         $resp["data"] = $temp;
+
+                        if($resp["data"] == []) {
+                            $resp["msg"]= "Invalid username or password";
+                        } else {
+                            $resp["msg"]= "Logined";
+                        }
+
                     } else {
                         $resp["statusCode"] = 400; //bad request
                         $resp["msg"] = "Bad request";
                     }
                 } else {
                     $resp["statusCode"] = 400; //bad request
-                    $resp["msg"] = "Bad request"; 
+                    $resp["msg"] = "Please enter Your Username and Password"; 
                 }
                 //our logic
             } else {

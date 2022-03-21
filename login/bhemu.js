@@ -17,30 +17,11 @@ $("#login").on("click", function() {
     let userName = $("#userName").val();
     let password = $("#password").val();
 
-    if (userName !== "" && password !== "") {
-        postApiCall("http://localhost/html/login/api/userSearch.php", {userName: userName}, function(resp){
+        postApiCall("http://localhost/html/login/api/userSearch.php", {userName: userName, password: password}, function(resp){
             if(resp.statusCode === 200) {
-              
-                if(resp.data.length !== [].length) {
-                    const realPass = resp.data[0].password;
-
-                    if(password == realPass) {
-                        $("#msg").text("Logined");
-                        $("#login").addClass("disableBtn");
-                    } else{
-                        $("#msg").text("Incorrect Password");
-                    }
-
-                } else {
-                    $("#msg").text("User name not fond");
-                }
-
+                $("#msg").text(resp.msg);
             } else{
                 $("#msg").text(resp.msg);
             }
-            
         })
-    } else {
-        $("#msg").text("plz enter ur username and password");
-    }
 })
