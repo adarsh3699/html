@@ -16,13 +16,11 @@
                     $query = "SELECT * FROM userSearch WHERE userName = '$userName' AND password = '$password'";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
                         $temp = array();
-                        while ($array = @mysqli_fetch_assoc($queryRun)) {
-                            array_push($temp, $array);
-                        }
-                        $resp["statusCode"] = 200;
-                        $resp["data"] = $temp;
+                        array_push($temp, @mysqli_fetch_assoc($queryRun));
 
-                        if($resp["data"] == []) {
+                        $resp["statusCode"] = 200;
+                        
+                        if(is_null($temp[0]) == true) {
                             $resp["msg"]= "Invalid username or password";
                         } else {
                             $resp["msg"]= "Logined";

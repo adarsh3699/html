@@ -12,7 +12,7 @@
                 //our logic
                 $userName = $data["userName"];
                 $password = $data["password"];
-                if ($userName != "") {
+                if ($userName != "" && $password != "") {
                     $query = "INSERT INTO userSearch (userName, password) VALUES ('$userName', '$password');";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
                         $resp["statusCode"] = 200;
@@ -23,7 +23,7 @@
                     }
                 } else {
                     $resp["statusCode"] = 400; //bad request
-                    $resp["msg"] = "Bad request"; 
+                    $resp["msg"] = "Please enter Your Username and Password"; 
                 }
                 //our logic
             } else {

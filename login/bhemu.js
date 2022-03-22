@@ -27,12 +27,12 @@ $("#login").on("click", function() {
 })
 
 $("#signup").on("click", function() {
-    let userName = $("#newUserName").val();
-    let password = $("#newPassword").val();
+    let newUserName = $("#newUserName").val();
+    let newPassword = $("#newPassword").val();
     let confirmPass = $("#confirmPass").val();
     
-    if(password == confirmPass) {
-        postApiCall("http://localhost/html/login/api/createAcc.php", {userName: userName, password: password}, function(resp){
+    if(newPassword == confirmPass) {
+        postApiCall("http://localhost/html/login/api/createAcc.php", {userName: newUserName, password: newPassword}, function(resp){
             if(resp.statusCode === 200) {
                 $("#updateMsg").text(resp.msg);
             } else{
