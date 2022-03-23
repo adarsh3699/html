@@ -12,20 +12,21 @@
                 //our logic
                 $userName = $data["userName"];
                 $password = $data["password"];
-                if ($userName != "") {
-                    $query = "SELECT * FROM userSearch WHERE userName = '$userName' AND password = '$password'";
+                if ($userName != "" && $password != "") {
+                    $query = "SELECT * FROM userSearch WHERE userName = '$userName'";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
-                        $temp = array();
-                        array_push($temp, @mysqli_fetch_assoc($queryRun));
+                        $temp = @mysqli_fetch_assoc($queryRun);
 
-                        $resp["statusCode"] = 200;
-                        
-                        if(is_null($temp[0]) == true) {
-                            $resp["msg"]= "Invalid username or password";
+                        if(is_null($temp) == true) {
+                            $resp["msg"]= "user is not registered";
+                            $resp["statusCode"] = 400; //bad request
+                        } else if($temp["password"] != $password)  {
+                            $resp["statusCode"] = 400; //bad request
+                            $resp["msg"] = "Password is wrong";
                         } else {
-                            $resp["msg"]= "Logined";
+                            $resp["msg"]= "successfully logged";
+                            $resp["statusCode"] = 200;
                         }
-
                     } else {
                         $resp["statusCode"] = 400; //bad request
                         $resp["msg"] = "Bad request";

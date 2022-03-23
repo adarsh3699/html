@@ -48,6 +48,11 @@ hr {
     margin-bottom: 10px;
 }
 
+.red {
+    color: red;
+    font-size: 80%;
+}
+
 .disableBtn {
     background-color: gray !important;
     pointer-events: none;

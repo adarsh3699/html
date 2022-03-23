@@ -13,13 +13,23 @@
                 $userName = $data["userName"];
                 $password = $data["password"];
                 if ($userName != "" && $password != "") {
-                    $query = "INSERT INTO userSearch (userName, password) VALUES ('$userName', '$password');";
-                    if ($queryRun = @mysqli_query($dbLink, $query)) {
-                        $resp["statusCode"] = 200;
-                        $resp["msg"] = "inserted";
-                    } else {
-                        $resp["statusCode"] = 400; //bad request
-                        $resp["msg"] = "Bad request";
+                    $checkUserExistsQuery = "SELECT * FROM userSearch WHERE userName = '$userName'";
+                    if ($checkUserExistsQueryRun = @mysqli_query($dbLink, $checkUserExistsQuery)) {
+                        $temp = @mysqli_fetch_assoc($checkUserExistsQueryRun);
+                        if(is_null($temp) == true) {
+                            //user is not registered
+                            $query = "INSERT INTO userSearch (userName, password) VALUES ('$userName', '$password');";
+                            if ($queryRun = @mysqli_query($dbLink, $query)) {
+                                $resp["statusCode"] = 200;
+                                $resp["msg"] = "user registered";
+                            } else {
+                                $resp["statusCode"] = 400; //bad request
+                                $resp["msg"] = "Bad request";
+                            }   
+                        } else {
+                            $resp["msg"]= "user is already registered";
+                            $resp["statusCode"] = 400; //bad request
+                        }
                     }
                 } else {
                     $resp["statusCode"] = 400; //bad request
