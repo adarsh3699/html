@@ -1,49 +1,40 @@
-// $('#inputBox').on("keyup", function(e){
-//     let store = e.target.value;  //$('#inputBox').val()
-
-//     if (e.keyCode === 13) {
-//         //if typed key is enter
-//         let lisPrevVal = $("#list").html();
-//         $("#list").html("<div>" + store + "</div>" + lisPrevVal);
-
-//         $("#list div").on("click", function() {
-//             let flag = $(this).hasClass("highlight");
-//             if (flag == false) {
-//                 $(this).addClass("highlight");
-//             } else {
-//                 $(this).removeClass("highlight");
-//             }
-//         });
-//         $("#inputBox").val("");
-//     }
-// });
-
-let toDos = [];
-$('#inputBox').on("keyup", function(e){
-    let store = e.target.value;  //$('#inputBox').val()
-
-    if (e.keyCode === 13) {
-        //if typed key is enter
-        toDos.push({ text: store, flag: false });
-
-        let html = "";
-        for(let i = 0; i < toDos.length; i++) {
-            html = "<div id='" + i + "'>" + toDos[i].text + "</div>" + html;
+async function apiCall(link, functionCall, isPost, body) {
+    try {
+        let apiCallResp;
+        if (isPost === true) {
+            apiCallResp = await fetch(link, {
+                method: "post",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+        } else {
+            apiCallResp = await fetch(link);
         }
-        $("#list").html(html);
+       
+        const apiJsonResp = await apiCallResp.json();
+        functionCall(apiJsonResp);
+    } catch (error) {
+        $("#load").text(error);
+    }
+}
 
-        $("#list div").on("click", function() {
-            let id = $(this).attr("id");
-            let flag = toDos[id].flag;
-            if (flag == false) {
-                $(this).addClass("highlight");
-            } else {
-                $(this).removeClass("highlight");
-            }
+apiCall("http://localhost/html/toDos/api/getToDos.php", function(resp) {
+    if (resp.statusCode == 200) {
+        for(let i = 0; i< resp?.data.length; i++) {
+            $("#list").append("<div>" + resp.data[i].toDo + "</div>");
+        }
+    } else {
+        console.log(resp.msg);
+    }
+});
 
-            toDos[id].flag = !flag;
-        });
-
+$("#inputBox").keyup(function(e) {
+    let keyValue = e.target.value;
+    
+    if(e.keyCode == 13) {
+        apiCall("http://localhost/html/toDos/api/addToDos.php", function(resp) {}, true, {toDo: keyValue}) 
+        console.log(keyValue);
+        
         $("#inputBox").val("");
     }
 });

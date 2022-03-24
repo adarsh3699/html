@@ -10,16 +10,12 @@
         if (@json_last_error() == JSON_ERROR_NONE) {
             if (@is_array($data)) {
                 //our logic
-                $searchText = $data["searchText"];
-                if ($searchText != "") {
-                    $query = "SELECT * FROM search WHERE text LIKE '" . $searchText . "%' ";
+                $toDo = $data["toDo"];
+                if ($toDo != "") {
+                    $query = "INSERT INTO `toDos` (toDo) VALUES ('$toDo')";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
-                        $temp = array();
-                        while ($array = @mysqli_fetch_assoc($queryRun)) {
-                            array_push($temp, $array);
-                        }
                         $resp["statusCode"] = 200;
-                        $resp["data"] = $temp;
+                        $resp["msg"] = "inserted";
                     } else {
                         $resp["statusCode"] = 400; //bad request
                         $resp["msg"] = "Bad request";
