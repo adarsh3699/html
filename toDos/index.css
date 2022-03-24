@@ -2,11 +2,20 @@ body {
     text-align: center;
 }
 
+#inputBox {
+    height: 22px;
+    width: 300px;
+    margin-bottom: 10px;
+    font-size: 105%;
+}
+
 #list div{
     border-bottom: 1px black solid;
     background-color: aquamarine;
+    padding: 5px;
 }
 
 .highlight {
     text-decoration: line-through;
+    background-color: rgb(73, 170, 138) !important;
 }

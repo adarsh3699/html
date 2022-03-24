@@ -22,8 +22,8 @@ let i = 0;
 apiCall("http://localhost/html/toDos/api/getToDos.php", function(resp) {
     if (resp.statusCode == 200) {
         for( ; i< resp?.data.length; i++) {
-            $("#list").append("<div>" + resp.data[i].toDo + "</div>");
-            console.log(i);
+            let value = resp.data[i];
+            $("#list").append("<div id='"+value.id+"' onClick='highlight("+value.id+")'>" + value.toDo + "</div>");
         }
     } else {
         console.log(resp.msg);
@@ -38,7 +38,8 @@ $("#inputBox").keyup(function(e) {
             apiCall("http://localhost/html/toDos/api/addToDos.php", function(add) {
 
                 if(add.statusCode == 200){
-                    $("#list").append("<div>" + keyValue + "</div>");
+                    $("#list").append("<div id='"+i+"' onClick='highlight("+i+")'>" + keyValue + "</div>");
+                    i++;
                 } else {
                     $("#list").append(add.msg);
                 }
@@ -50,3 +51,16 @@ $("#inputBox").keyup(function(e) {
         $("#inputBox").val("");
     }
 });
+
+let isDone = 0;
+function highlight(id) {
+    if(isDone == 0){
+        $("#"+id).addClass("highlight");
+        console.log($("#"+id));
+        console.log(isDone);
+        isDone = 1;
+    } else {
+        $("#"+id).removeClass("highlight");
+        isDone= 0;
+    }
+};
