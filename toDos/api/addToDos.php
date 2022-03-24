@@ -10,7 +10,7 @@
         if (@json_last_error() == JSON_ERROR_NONE) {
             if (@is_array($data)) {
                 //our logic
-                $toDo = $data["toDo"];
+                $toDo = trim($data["toDo"]);
                 if ($toDo != "") {
                     $query = "INSERT INTO `toDos` (toDo) VALUES ('$toDo')";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {

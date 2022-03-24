@@ -2,6 +2,11 @@ body {
     text-align: center;
 }
 
+#list div{
+    border-bottom: 1px black solid;
+    background-color: aquamarine;
+}
+
 .highlight {
     text-decoration: line-through;
 }
