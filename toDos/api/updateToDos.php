@@ -15,8 +15,20 @@
                 if ($id != "") {
                     $query = "UPDATE `toDos` SET `isDone` = '$isDone' WHERE toDos.id = $id";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
-                        $resp["statusCode"] = 200;
-                        $resp["msg"] = "changed";
+
+                        $getListQuery = "SELECT * FROM `toDos`";
+                        if ($getListQueryRun = @mysqli_query($dbLink, $getListQuery)) {
+                            $temp = array();
+                            while ($array = @mysqli_fetch_assoc($getListQueryRun)) {
+                                array_push($temp, $array);
+                            }
+                            $resp["statusCode"] = 200;
+                            $resp["msg"] = "updated";
+                            $resp["data"] = $temp;
+                        } else {
+                            $resp["statusCode"] = 400; //bad request
+                            $resp["msg"] = "Bad request";
+                        }
                     } else {
                         $resp["statusCode"] = 400; //bad request
                         $resp["msg"] = "Bad request";

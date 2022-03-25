@@ -16,6 +16,7 @@
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
                         $resp["statusCode"] = 200;
                         $resp["msg"] = "inserted";
+                        $resp["id"] = @mysqli_insert_id($dbLink);
                     } else {
                         $resp["statusCode"] = 400; //bad request
                         $resp["msg"] = "Bad request";
