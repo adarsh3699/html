@@ -38,7 +38,7 @@ function renderListElement(thisData) {
     const toDo = thisData?.toDo;
     const isDone = thisData?.isDone;
 
-    $("#list").append("<div id='" + id +"' onClick='highlight(" + id + "," + isDone + ")' >" + toDo + "<button onClick='event.stopPropagation(); deleteToDO(" + id + ")' >Remove</button> </div>");
+    $("#list").prepend("<div id='" + id +"' onClick='highlight(" + id + "," + isDone + ")' >" + toDo + "<button onClick='event.stopPropagation(); deleteToDO(" + id + ")' >Remove</button> </div>");
     
     if (isDone == 1) {
         $("#" + id).addClass("highlight");
