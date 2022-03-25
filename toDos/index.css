@@ -1,18 +1,27 @@
 body {
     text-align: center;
+    margin: unset;
 }
 
 #inputBox {
     height: 22px;
     width: 300px;
-    margin-bottom: 10px;
+    margin: 10px 0px;
     font-size: 105%;
+    background-color: rgb(216, 215, 150);
 }
 
 #list div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px black solid;
     background-color: aquamarine;
     padding: 5px;
+}
+
+#list button{
+    user-select: none;
 }
 
 .highlight {

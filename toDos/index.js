@@ -28,14 +28,20 @@ apiCall("http://localhost/html/toDos/api/getToDos.php", function(resp) {
 
 function renderList(data) {
     $("#list").html("");
-    for (let i = 0; i< data.length; i++) {
-        const id = data?.[i]?.id;
-        const toDo = data?.[i]?.toDo;
-        const isDone = data?.[i]?.isDone;
-        $("#list").append("<div id='" + id +"' onClick='highlight(" + id + "," + isDone + ")'>" + toDo + "</div>");
-        if (isDone == 1) {
-            $("#" + id).addClass("highlight");
-        }
+    for (let i = 0; i < data.length; i++) {
+        renderListElement(data?.[i]);
+    }
+}
+
+function renderListElement(thisData) {
+    const id = thisData?.id;
+    const toDo = thisData?.toDo;
+    const isDone = thisData?.isDone;
+
+    $("#list").append("<div id='" + id +"' onClick='highlight(" + id + "," + isDone + ")' >" + toDo + "<button onClick='event.stopPropagation(); deleteToDO(" + id + ")' >Remove</button> </div>");
+    
+    if (isDone == 1) {
+        $("#" + id).addClass("highlight");
     }
 }
 
@@ -46,8 +52,7 @@ $("#inputBox").keyup(function(e) {
         if (keyValue != "") {
             apiCall("http://localhost/html/toDos/api/addToDos.php", function(resp) {
                 if (resp.statusCode == 200) {
-                    const id = resp?.id;
-                    $("#list").append("<div id='" + id + "' onClick='highlight(" + id + ", 0)'>" + keyValue + "</div>");
+                    renderListElement({ id: resp?.id, toDo: keyValue, isDone: 0 });
                 } else {
                     $("#list").append(resp.msg);
                 }
@@ -68,9 +73,18 @@ function highlight(id, isDone) {
     apiCall("http://localhost/html/toDos/api/updateToDos.php", function(resp) {
         if (resp.statusCode === 200) {
             renderList(resp?.data);
-            console.log(resp)
         } else {
             console.log(resp.msg);
         }
     }, true, { id, isDone: newIsDone });
+};
+
+function deleteToDO(id) {
+    apiCall("http://localhost/html/toDos/api/removeToDo.php", function(resp) {
+        if (resp.statusCode === 200) {
+            renderList(resp?.data);
+        } else {
+            console.log(resp.msg);
+        }
+    }, true, { id });
 };
