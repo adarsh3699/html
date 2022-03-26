@@ -1,0 +1,49 @@
+body {
+    margin: unset;
+}
+
+#bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(24, 23, 23, 0.9);
+    padding: 10px 0px;
+    width: 100%;
+    z-index: 10;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+#title img {
+    padding-left: 10px;
+}
+
+#delete {
+    margin-right: 20px;
+}
+
+#background {
+    background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
+    overflow: hidden;
+    width: 100%;
+    min-height: 100vh;
+}
+
+#notes {
+    color: white;
+    font-size: 18px;
+    background-color: rgba(24, 23, 23, 0.6);
+    min-height: 500px;
+    margin: auto;
+    padding: 5px 15px;
+    width: 96%;
+}

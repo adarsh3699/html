@@ -39,7 +39,7 @@ function renderListElement(thisData) {
     const isDone = thisData?.isDone;
     const title = thisData?.title;
 
-    $("#list").prepend("<div id='" + id +"' onClick='highlight(" + id + "," + isDone + ")' >" + title + "</div>");
+    $("#list").prepend("<div id='" + id +"' onClick='highlight(" + id + "," + isDone + ")' >" + title + "<img src='edit.png'></div>");
     // <button onClick='event.stopPropagation(); deleteToDO(" + id + ")' >Remove</button>
     if (isDone == 1) {
         $("#" + id).addClass("highlight");
@@ -68,7 +68,7 @@ $("#inputBox").keyup(function(e) {
 function highlight(id, isDone) {
     let newIsDone = 0;
     if (isDone === 0) {
-        newIsDone = 1;
+        newIsDone =  1;
     }
     
     apiCall("http://localhost/html/toDos/api/updateToDos.php", function(resp) {
