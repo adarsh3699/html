@@ -1,23 +1,46 @@
 body {
-    text-align: center;
     margin: unset;
 }
 
+#bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    background-color: rgba(24, 23, 23, 0.9);
+    color: rgb(255, 255, 255);
+    width: 100%;
+    z-index: 10;
+    user-select: none;
+}
+
+#background {
+    background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
+    overflow: hidden;
+    width: 100%;
+    min-height: 100vh;
+}
+
 #inputBox {
-    height: 22px;
-    width: 300px;
-    margin: 10px 0px;
+    height: 25px;
+    width: 350px;
+    margin: 8px 0px;
     font-size: 105%;
-    background-color: rgb(216, 215, 150);
+    /* background-color: rgb(216, 215, 150); */
 }
 
 #list div{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px black solid;
-    background-color: aquamarine;
-    padding: 5px;
+    font-size: 150%;
+    color: white;
+    border-bottom: 1px white solid;
+    background-color: rgba(29, 28, 28, 0.9);
+    padding-left: 10px;
+    height: 90px;
 }
 
 #list button{

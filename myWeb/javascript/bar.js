@@ -53,7 +53,7 @@ $('#send').on("click", function() {
 
     if (email !== "" && text !== "") {
         $("#send").addClass("disableBtn");
-        $('#confirmMsg').text('Sended')
+        $('#confirmMsg').text('sent')
     }
 });
 
