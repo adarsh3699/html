@@ -6,8 +6,6 @@ for (var i = 0, l = params.length; i < l; i++) {
         notes[tmp[0]] = tmp[1];
 }
 const myNotesId = notes.id;
-console.log(myNotesId);
-
 
 async function postApiCall(link, body, functionCall) {
     try {

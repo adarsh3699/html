@@ -48,7 +48,9 @@ $("#inputBox").keyup(function(e) {
         if (keyValue != "") {
             apiCall("http://localhost/html/notes/api/addNotes.php", function(resp) {
                 if (resp.statusCode == 200) {
-                    renderList(resp?.data);
+                    // renderList(resp?.data);
+                    openMyNotes(resp.id);
+                    
                 } else {
                     $("#list").append(resp.msg);
                 }
