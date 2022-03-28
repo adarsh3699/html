@@ -7,48 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #textarea {
-            border: 1px solid #ccc;
-            font-family: inherit;
-            font-size: inherit;
-            padding: 1px 6px;
-            display: block;
-            width: 100%;
-            overflow: hidden;
-            min-height: 40px;
-            line-height: 20px;
-        }
+#input {
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1px 20px;
+}
     </style>
 </head>
 
 <body>
-    <!-- <span id="textarea" autofocus value="value text" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" contenteditable >sdfg</span></p> -->
-
-    <div contenteditable="true" aria-multiline="true" role="textbox" class="notranslate IZ65Hb-YPqjbf fmcmS-x3Eknd h1U9Be-YPqjbf" tabindex="0" spellcheck="true" dir="ltr">ad</div>
+    <span id="input" role="textbox" contenteditable>asdfgh</span>
 
     <script src="jquery.js"></script>
     <script>
-    $(document).ready(function(){
-        $("#textarea").focus(function(){
-            console.log(this);
-            if (this.setSelectionRange)
-            {
-            var len = $(this).val().length;
-            this.setSelectionRange(len, len);
-            console.log(len);
-            }
-            else
-            {
-            console.log("not works");
-            }
-            
-    
-    });
-
-    $("#textarea").focus();
-    });
-    document.querySelector("body > div.VIpgJd-TUo6Hb.XKSfm-L9AdLc.eo9XGd > div > div.IZ65Hb-TBnied.zTETae-h1U9Be-hxXJme > div.IZ65Hb-s2gQvd > div.IZ65Hb-qJTHM-haAclf > div.notranslate.IZ65Hb-YPqjbf.fmcmS-x3Eknd.h1U9Be-YPqjbf")
-</script>
+    $("#input").keyup(function(e) {
+        if (e.keyCode == 13) {
+            $('#input').blur();
+        }
+    })
+    </script>
 </body>
 
 </html>

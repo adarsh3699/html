@@ -15,7 +15,7 @@
                     $query = "DELETE FROM `notes` WHERE `notes`.`id` = $id";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
                         
-                        $getListQuery = "SELECT * FROM `notes`";
+                        $getListQuery = "SELECT title,id FROM `notes`";
                         if ($getListQueryRun = @mysqli_query($dbLink, $getListQuery)) {
                             $temp = array();
                             while ($array = @mysqli_fetch_assoc($getListQueryRun)) {

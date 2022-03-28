@@ -62,18 +62,6 @@ $("#inputBox").keyup(function(e) {
     }
 });
 
-// function highlight(id) {￼￼
-//     let newTitle = $("#box"+id).val();
-//     console.log($( "#"+id).html() );
-//     apiCall("http://localhost/html/notes/api/updateToDos.php", function(resp) {
-//         if (resp.statusCode === 200) {
-//             renderList(resp?.data);
-//         } else {
-//             console.log(resp.msg);
-//         }
-//     }, true, { id, title: newTitle });
-// };
-
 function deleteToDO(id) {
     apiCall("http://localhost/html/notes/api/removeNotes.php", function(resp) {
         if (resp.statusCode === 200) {
@@ -85,6 +73,6 @@ function deleteToDO(id) {
 };
 
 function openMyNotes(id) {
-    url = window.location.href + 'notes.html?id=' + encodeURIComponent(id);
+    url = window.location.href + "notes.html?id=" + encodeURIComponent(id);
     document.location.href = url;
 }

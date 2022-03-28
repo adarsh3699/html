@@ -21,17 +21,43 @@ async function postApiCall(link, body, functionCall) {
     }
 }
 
-postApiCall("http://localhost/html/notes/api/getNotesById.php", {id: myNotesId}, function(resp) {
+postApiCall("api/getNotesById.php", {id: myNotesId}, function(resp) {
     const title = resp.data[0].title;
     const myNotes = resp.data[0].notes;
     $("#title").val(title);
     $("#textArea").text(myNotes);
 })
 
+function updateNotes(notes, title) {
+    const body = {id:myNotesId , notes , title};
+    postApiCall("api/updateNotes.php", body , function(resp) {
+        console.log(resp.msg);
+    });
+}
 
-// $("#textArea").each(function () {
-//     this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
-//   }).on("input", function () {
-//     this.style.height = "auto";
-//     this.style.height = (this.scrollHeight) + "px";
-//   });
+$("#title").keyup(function(e) {
+    const keyValue = (e.target.value).trim();
+    
+    if (e.keyCode == 13) {
+        if (keyValue != "") {
+            const newtitle = $("#title").val();     
+            const newNote = $("#textArea").text();
+
+            updateNotes(newNote, newtitle)
+            $('#title').blur();
+        }
+    }
+});
+
+$("#save").on("click", function() {
+    const newNote = $("#textArea").text();
+    const newtitle = $("#title").val(); 
+    updateNotes(newNote, newtitle)
+});
+
+$("#delete").on("click", function() {
+    console.log("delete"); 
+    postApiCall("api/removeNotes.php", {id: myNotesId}, function() {
+    history.back()
+    });
+});

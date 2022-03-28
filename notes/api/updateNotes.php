@@ -11,20 +11,19 @@
             if (@is_array($data)) {
                 //our logic
                 $id = $data["id"];
-                $title = $data["title"];
-                if ($id != "") {
-                    $query = "UPDATE `notes` SET `title` = '$title' WHERE notes.id = $id";
+                
+                $notes = $data["notes"];
+                if ($id != "") {  
+                    $query = "UPDATE `notes` SET `notes` = '$notes' WHERE `notes`.`id` = $id";
+                  
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
+                        $title = $data["title"];
 
-                        $getListQuery = "SELECT * FROM `notes`";
-                        if ($getListQueryRun = @mysqli_query($dbLink, $getListQuery)) {
-                            $temp = array();
-                            while ($array = @mysqli_fetch_assoc($getListQueryRun)) {
-                                array_push($temp, $array);
-                            }
+                        $notesQuery = "UPDATE `notes` SET `title` = '$title' WHERE notes.id = $id";
+                        if ($notesQueryRun = @mysqli_query($dbLink, $notesQuery)) {
+                          
                             $resp["statusCode"] = 200;
-                            $resp["msg"] = "updated";
-                            $resp["data"] = $temp;
+                            $resp["msg"] = "Notes Updated";
                         } else {
                             $resp["statusCode"] = 400; //bad request
                             $resp["msg"] = "Bad request";
