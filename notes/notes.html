@@ -9,18 +9,19 @@
 </head>
 <body>
     <div id="bar">
-        <div id="title">
-            What to eat
-            <img src="edit.png" height="25px">
-        </div>
+        <input type="text" id="title">
 
         <img src="delete.png" height="25px" id="delete">
 
     </div>
     <div id="background">
         <br><br><br>
-        <div id="notes">samosa</div>
+        <div id="notesArea">
+            <span id="textArea" role="textbox" contenteditable></span>
+        </div>
     </div>
 
+    <script src="jquery.js"></script>
+    <script src="notes.js"></script>
 </body>
 </html>

@@ -83,6 +83,6 @@ function deleteToDO(id) {
 };
 
 function openMyNotes(id) {
-    url = window.location.href + '/notes.html?id=' + encodeURIComponent(id);
+    url = window.location.href + 'notes.html?id=' + encodeURIComponent(id);
     document.location.href = url;
 }

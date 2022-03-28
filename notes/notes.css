@@ -18,9 +18,11 @@ body {
 #title {
     display: flex;
     align-items: center;
-    color: white;
     font-size: 20px;
     margin-left: 20px;
+    color: white;
+    background-color: unset;
+    border: unset;
 }
 
 #title img {
@@ -38,12 +40,22 @@ body {
     min-height: 100vh;
 }
 
-#notes {
+#notesArea {
+    background-color: rgba(24, 23, 23, 0.6);
+    margin: auto;
+    margin-bottom: 50px;
+    width: 96%;
+    /* outline: auto; */
+}
+
+#textArea {
+    display: block;
+    padding: 5px 8px;
     color: white;
     font-size: 18px;
-    background-color: rgba(24, 23, 23, 0.6);
-    min-height: 500px;
-    margin: auto;
-    padding: 5px 15px;
-    width: 96%;
+    border: 1px solid #ccc;
+    resize: vertical;
+    outline: unset;
+    width: calc(100% - 16px);
+    min-height: 80vh;
 }
