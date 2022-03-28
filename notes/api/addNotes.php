@@ -14,9 +14,21 @@
                 if ($notes != "") {
                     $query = "INSERT INTO `notes` (notes) VALUES ('$notes')";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
-                        $resp["statusCode"] = 200;
-                        $resp["msg"] = "inserted";
                         $resp["id"] = @mysqli_insert_id($dbLink);
+                        
+                        $getListQuery = "SELECT * FROM `notes`";
+                        if ($getListQueryRun = @mysqli_query($dbLink, $getListQuery)) {
+                            $temp = array();
+                            while ($array = @mysqli_fetch_assoc($getListQueryRun)) {
+                                array_push($temp, $array);
+                            }
+                            $resp["statusCode"] = 200;
+                            $resp["msg"] = "inserted";
+                            $resp["data"] = $temp;
+                        } else {
+                            $resp["statusCode"] = 400; //bad request
+                            $resp["msg"] = "Bad request";
+                        }
                     } else {
                         $resp["statusCode"] = 400; //bad request
                         $resp["msg"] = "Bad request";

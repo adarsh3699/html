@@ -4,7 +4,7 @@
 
     try {
         //our logic                
-        $query = "SELECT * FROM `notes`";
+        $query = "SELECT title,id FROM `notes`";
         if ($queryRun = @mysqli_query($dbLink, $query)) {
             $temp = array();
             while ($array = @mysqli_fetch_assoc($queryRun)) {
