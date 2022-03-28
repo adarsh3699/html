@@ -4,7 +4,7 @@
 
     try {
         //our logic                
-        $query = "SELECT * FROM `toDos`";
+        $query = "SELECT * FROM `notes`";
         if ($queryRun = @mysqli_query($dbLink, $query)) {
             $temp = array();
             while ($array = @mysqli_fetch_assoc($queryRun)) {

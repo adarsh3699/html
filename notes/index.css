@@ -28,18 +28,18 @@ body {
     width: 350px;
     margin: 8px 0px;
     font-size: 105%;
-    /* background-color: rgb(216, 215, 150); */
 }
 
 #list div{
     display: flex;
     align-items: center;
-    font-size: 150%;
-    color: white;
-    border-bottom: 1px white solid;
+    border: 1px rgb(70, 66, 66) solid;
     background-color: rgba(29, 28, 28, 0.9);
     padding-left: 10px;
     height: 90px;
+    margin-top: 5px;
+    font-size: 150%;
+    color: white;
 }
 
 #list img{

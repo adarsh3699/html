@@ -10,9 +10,9 @@
         if (@json_last_error() == JSON_ERROR_NONE) {
             if (@is_array($data)) {
                 //our logic
-                $toDo = trim($data["toDo"]);
-                if ($toDo != "") {
-                    $query = "INSERT INTO `toDos` (toDo) VALUES ('$toDo')";
+                $notes = trim($data["notes"]);
+                if ($notes != "") {
+                    $query = "INSERT INTO `notes` (notes) VALUES ('$notes')";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
                         $resp["statusCode"] = 200;
                         $resp["msg"] = "inserted";

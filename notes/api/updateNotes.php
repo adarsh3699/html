@@ -10,19 +10,20 @@
         if (@json_last_error() == JSON_ERROR_NONE) {
             if (@is_array($data)) {
                 //our logic
-                $id = trim($data["id"]);
+                $id = $data["id"];
+                $title = $data["title"];
                 if ($id != "") {
-                    $query = "DELETE FROM `toDos` WHERE `toDos`.`id` = $id";
+                    $query = "UPDATE `notes` SET `title` = '$title' WHERE notes.id = $id";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
-                        
-                        $getListQuery = "SELECT * FROM `toDos`";
+
+                        $getListQuery = "SELECT * FROM `notes`";
                         if ($getListQueryRun = @mysqli_query($dbLink, $getListQuery)) {
                             $temp = array();
                             while ($array = @mysqli_fetch_assoc($getListQueryRun)) {
                                 array_push($temp, $array);
                             }
                             $resp["statusCode"] = 200;
-                            $resp["msg"] = "removed";
+                            $resp["msg"] = "updated";
                             $resp["data"] = $temp;
                         } else {
                             $resp["statusCode"] = 400; //bad request
@@ -34,7 +35,7 @@
                     }
                 } else {
                     $resp["statusCode"] = 400; //bad request
-                    $resp["msg"] = "Bad request"; 
+                    $resp["msg"] = "select a ID"; 
                 }
                 //our logic
             } else {

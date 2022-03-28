@@ -18,7 +18,7 @@ async function apiCall(link, functionCall, isPost, body) {
     }
 }
 
-apiCall("http://localhost/html/toDos/api/getToDos.php", function(resp) {
+apiCall("http://localhost/html/notes/api/getToDos.php", function(resp) {
     if (resp.statusCode == 200) {
         renderList(resp?.data);
     } else {
@@ -35,7 +35,7 @@ function renderList(data) {
 
 function renderListElement(thisData) {
     const id = thisData?.id;
-    const toDo = thisData?.toDo;
+    const notes = thisData?.notes;
     const isDone = thisData?.isDone;
     const title = thisData?.title;
 
@@ -51,13 +51,13 @@ $("#inputBox").keyup(function(e) {
     
     if (e.keyCode == 13) {
         if (keyValue != "") {
-            apiCall("http://localhost/html/toDos/api/addToDos.php", function(resp) {
+            apiCall("http://localhost/html/notes/api/addToDos.php", function(resp) {
                 if (resp.statusCode == 200) {
-                    renderListElement({ id: resp?.id, toDo: keyValue, isDone: 0 });
+                    renderListElement({ id: resp?.id, notes: keyValue, isDone: 0 });
                 } else {
                     $("#list").append(resp.msg);
                 }
-            }, true, {toDo: keyValue});
+            }, true, {notes: keyValue});
         } else {
             $("#list").append("enter something");
         }
@@ -71,7 +71,7 @@ function highlight(id, isDone) {
         newIsDone =  1;
     }
     
-    apiCall("http://localhost/html/toDos/api/updateToDos.php", function(resp) {
+    apiCall("http://localhost/html/notes/api/updateToDos.php", function(resp) {
         if (resp.statusCode === 200) {
             renderList(resp?.data);
         } else {
@@ -81,7 +81,7 @@ function highlight(id, isDone) {
 };
 
 function deleteToDO(id) {
-    apiCall("http://localhost/html/toDos/api/removeToDo.php", function(resp) {
+    apiCall("http://localhost/html/notes/api/removeToDo.php", function(resp) {
         if (resp.statusCode === 200) {
             renderList(resp?.data);
         } else {
