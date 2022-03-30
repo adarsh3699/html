@@ -14,12 +14,20 @@
                 if ($id != "") {
                     $query = "SELECT * FROM notes WHERE id LIKE $id";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
-                        $temp = array();
-                        while ($array = @mysqli_fetch_assoc($queryRun)) {
-                            array_push($temp, $array);
+
+                        $getIdQuery = "SELECT id FROM `notes`";
+                        if ($getIdQueryRun = @mysqli_query($dbLink, $getIdQuery)) {
+                            $temp = array();
+                            while ($array = @mysqli_fetch_assoc($getIdQueryRun)) {
+                                array_push($temp, $array);
+                            }
+                            $resp["statusCode"] = 200;
+                            $resp["allIds"] = $temp;
+                            $resp["data"] = @mysqli_fetch_assoc($queryRun);
+                        } else {
+                            $resp["statusCode"] = 400; //bad request
+                            $resp["msg"] = "Bad request";
                         }
-                        $resp["statusCode"] = 200;
-                        $resp["data"] = $temp;
                     } else {
                         $resp["statusCode"] = 400; //bad request
                         $resp["msg"] = "Bad request";

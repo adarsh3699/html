@@ -17,28 +17,25 @@ async function apiCall(link, functionCall, isPost, body) {
         $("#load").text(error);
     }
 }
+function getNotes() {
+    apiCall("http://localhost/html/notes/api/getNotes.php", function(resp) {
+        if (resp.statusCode == 200) {
+            renderList(resp?.data);
+        } else {
+            $("#msg").text(resp.msg);
+        }
+    });
+}
 
-apiCall("http://localhost/html/notes/api/getNotes.php", function(resp) {
-    if (resp.statusCode == 200) {
-        renderList(resp?.data);
-    } else {
-        $("#msg").text(resp.msg);
-    }
-});
+getNotes();
 
 function renderList(data) {
     $("#list").html("");
     for (let i = 0; i < data.length; i++) {
-        renderListElement(data?.[i]);
+        const id = data[i]?.id;
+        const title = data[i]?.title;
+        $("#list").prepend("<div id='" + id +"' onClick='openMyNotes(" + id + ")'> " +title+" <img src='img/delete.png' onClick='event.stopPropagation(); deleteToDO(" + id + ")'></div>");
     }
-}
-
-function renderListElement(thisData) {
-    const id = thisData?.id;
-    const notes = thisData?.notes;
-    const isDone = thisData?.isDone;
-    const title = thisData?.title;
-    $("#list").prepend("<div id='" + id +"' onClick='openMyNotes(" + id + ")'> " +title+" <img src='img/delete.png' onClick='event.stopPropagation(); deleteToDO(" + id + ")'></div>");
 }
 
 $("#inputBox").keyup(function(e) {
@@ -78,10 +75,9 @@ function openMyNotes(id) {
 }
 
 
-// window.onfocus = function() {
-//     console.log("Refr");
-//     renderList(data);
-// };
+window.onfocus = function() {
+    getNotes();
+};
 
 
 $(document).on("click", function(e){

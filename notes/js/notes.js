@@ -23,10 +23,19 @@ async function postApiCall(link, body, functionCall) {
 
 postApiCall("api/getNotesById.php", { id: myNotesId }, function(resp) {
     if (resp.statusCode == 200) {
-        const title = resp.data[0]?.title;
-        const myNotes = resp.data[0]?.notes;
+        const title = resp.data?.title;
+        const myNotes = resp.data?.notes;
         $("#title").val(title);
         $("#textArea").text(myNotes);
+
+        for (let i = 0; i<resp.allIds.length; i++) {
+            if (resp.allIds[i].id == myNotesId) {
+            } else {
+                console.log("error");
+                $("#bar, #textArea, #msg").css({"display": "none"});
+                $("#background").html("<div id='error'>Note not found</div>");
+            }
+        }
     } else {
         $("#msg").text(resp.msg);
     }

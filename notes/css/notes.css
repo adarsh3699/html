@@ -70,3 +70,9 @@ padding-right: 20px;
     width: calc(100% - 16px);
     min-height: 80vh;
 }
+
+#error {
+    text-align: center;
+    color: red;
+    font-size: 30px;
+}
