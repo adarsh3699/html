@@ -22,16 +22,24 @@ async function postApiCall(link, body, functionCall) {
 }
 
 postApiCall("api/getNotesById.php", { id: myNotesId }, function(resp) {
-    const title = resp.data[0]?.title;
-    const myNotes = resp.data[0]?.notes;
-    $("#title").val(title);
-    $("#textArea").text(myNotes);
+    if (resp.statusCode == 200) {
+        const title = resp.data[0]?.title;
+        const myNotes = resp.data[0]?.notes;
+        $("#title").val(title);
+        $("#textArea").text(myNotes);
+    } else {
+        $("#msg").text(resp.msg);
+    }
 })
 
 function updateNotes(notes, title) {
     const body = { id: myNotesId, notes, title };
     postApiCall("api/updateNotes.php", body , function(resp) {
-        console.log(resp.msg);
+        if (resp.statusCode == 200) {
+            $("#msg").text(resp.msg);
+        } else {
+            $("#msg").text(resp.msg);
+        }
     });
 }
 
@@ -56,8 +64,13 @@ $("#save").on("click", function() {
 });
 
 $("#delete").on("click", function() {
-    console.log("delete"); 
-    postApiCall("api/removeNotes.php", {id: myNotesId}, function() {
-        history.back()
+    // window.close();
+    postApiCall("api/removeNotes.php", {id: myNotesId}, function(resp) {
+        if (resp.statusCode == 200) {
+            $("#msg").text(resp.msg);
+            window.close();
+        } else {
+            $("#msg").text(resp.msg);
+        }
     });
 });

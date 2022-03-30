@@ -38,7 +38,7 @@ function renderListElement(thisData) {
     const notes = thisData?.notes;
     const isDone = thisData?.isDone;
     const title = thisData?.title;
-    $("#list").prepend("<div id='" + id +"' onClick='openMyNotes(" + id + ")'> " +title+" <img src='delete.png' onClick='event.stopPropagation(); deleteToDO(" + id + ")'></div>");
+    $("#list").prepend("<div id='" + id +"' onClick='openMyNotes(" + id + ")'> " +title+" <img src='img/delete.png' onClick='event.stopPropagation(); deleteToDO(" + id + ")'></div>");
 }
 
 $("#inputBox").keyup(function(e) {
