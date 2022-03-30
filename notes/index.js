@@ -48,8 +48,8 @@ $("#inputBox").keyup(function(e) {
         if (keyValue != "") {
             apiCall("http://localhost/html/notes/api/addNotes.php", function(resp) {
                 if (resp.statusCode == 200) {
+                    renderList(resp?.data);
                     openMyNotes(resp.id);
-                    window.location.reload();
                 } else {
                     $("#list").append(resp.msg);
                 }
@@ -74,6 +74,5 @@ function deleteToDO(id) {
 function openMyNotes(id) {
     url = window.location.href + "notes.html?id=" + encodeURIComponent(id);
     window.open(url, '_blank').focus();
-    // window.open(url)
     // document.location.href = url;
 }

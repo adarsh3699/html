@@ -2,8 +2,8 @@ var url = document.location.href,
     params = url.split('?')[1].split('&'),
     notes = {}, tmp;
 for (var i = 0, l = params.length; i < l; i++) {
-        tmp = params[i].split('=');
-        notes[tmp[0]] = tmp[1];
+    tmp = params[i].split('=');
+    notes[tmp[0]] = tmp[1];
 }
 const myNotesId = notes.id;
 
@@ -21,15 +21,15 @@ async function postApiCall(link, body, functionCall) {
     }
 }
 
-postApiCall("api/getNotesById.php", {id: myNotesId}, function(resp) {
-    const title = resp.data[0].title;
-    const myNotes = resp.data[0].notes;
+postApiCall("api/getNotesById.php", { id: myNotesId }, function(resp) {
+    const title = resp.data[0]?.title;
+    const myNotes = resp.data[0]?.notes;
     $("#title").val(title);
     $("#textArea").text(myNotes);
 })
 
 function updateNotes(notes, title) {
-    const body = {id:myNotesId , notes , title};
+    const body = { id: myNotesId, notes, title };
     postApiCall("api/updateNotes.php", body , function(resp) {
         console.log(resp.msg);
     });
@@ -58,6 +58,6 @@ $("#save").on("click", function() {
 $("#delete").on("click", function() {
     console.log("delete"); 
     postApiCall("api/removeNotes.php", {id: myNotesId}, function() {
-    history.back()
+        history.back()
     });
 });
