@@ -26,7 +26,9 @@ $('#mobileIcon').on("click", function(e) {
 });
 
 $(document).on("click", function(e){
-    $('#mobileMenu').removeClass("show");
+    if ($('#mobileMenu').hasClass("show")) {
+        $('#mobileMenu').removeClass("show");
+    }
 });
 
 $(document).ready(function(){

@@ -16,6 +16,13 @@ body {
     user-select: none;
 }
 
+#inputBox {
+    height: 25px;
+    width: 350px;
+    margin: 8px 0px;
+    font-size: 105%;
+}
+
 #background {
     background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
     overflow: hidden;
@@ -23,11 +30,12 @@ body {
     min-height: 100vh;
 }
 
-#inputBox {
-    height: 25px;
-    width: 350px;
-    margin: 8px 0px;
-    font-size: 105%;
+#msg {
+    margin-top: 60px;
+    text-align: center;
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #list div{
@@ -46,9 +54,4 @@ body {
     user-select: none;
     padding-left: 10px;
     height: 28px;
-}
-
-.highlight {
-    text-decoration: line-through;
-    background-color: rgb(73, 170, 138) !important;
 }

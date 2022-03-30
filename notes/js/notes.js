@@ -57,14 +57,15 @@ $("#title").keyup(function(e) {
     }
 });
 
-$("#save").on("click", function() {
+$("#save").on("click", function(e) {
+    e.stopPropagation();
     const newNote = $("#textArea").text();
     const newtitle = $("#title").val(); 
     updateNotes(newNote, newtitle)
 });
 
-$("#delete").on("click", function() {
-    // window.close();
+$("#delete").on("click", function(e) {
+    e.stopPropagation();
     postApiCall("api/removeNotes.php", {id: myNotesId}, function(resp) {
         if (resp.statusCode == 200) {
             $("#msg").text(resp.msg);
@@ -73,4 +74,10 @@ $("#delete").on("click", function() {
             $("#msg").text(resp.msg);
         }
     });
+});
+
+$(document).on("click", function(e){
+    if ($("#msg").text() !== "") {
+        $("#msg").text("");
+    }
 });

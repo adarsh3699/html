@@ -22,7 +22,7 @@ apiCall("http://localhost/html/notes/api/getNotes.php", function(resp) {
     if (resp.statusCode == 200) {
         renderList(resp?.data);
     } else {
-        console.log(resp.msg);
+        $("#msg").text(resp.msg);
     }
 });
 
@@ -51,11 +51,11 @@ $("#inputBox").keyup(function(e) {
                     renderList(resp?.data);
                     openMyNotes(resp.id);
                 } else {
-                    $("#list").append(resp.msg);
+                    $("#msg").text(resp.msg);
                 }
             }, true, {notes: keyValue});
         } else {
-            $("#list").append("enter something");
+            $("#msg").text("Enter something");
         }
         $("#inputBox").val("");
     }
@@ -66,7 +66,7 @@ function deleteToDO(id) {
         if (resp.statusCode === 200) {
             renderList(resp?.data);
         } else {
-            console.log(resp.msg);
+            $("#msg").text(resp.msg);
         }
     }, true, { id });
 };
@@ -76,3 +76,16 @@ function openMyNotes(id) {
     window.open(url, '_blank').focus();
     // document.location.href = url;
 }
+
+
+// window.onfocus = function() {
+//     console.log("Refr");
+//     renderList(data);
+// };
+
+
+$(document).on("click", function(e){
+    if ($("#msg").text() !== "") {
+        $("#msg").text("");
+    }
+});
