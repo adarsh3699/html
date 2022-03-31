@@ -28,14 +28,6 @@ postApiCall("api/getNotesById.php", { id: myNotesId }, function(resp) {
         $("#title").val(title);
         $("#textArea").text(myNotes);
 
-        for (let i = 0; i<resp.allIds.length; i++) {
-            if (resp.allIds[i].id == myNotesId) {
-            } else {
-                console.log("error");
-                $("#bar, #textArea, #msg").css({"display": "none"});
-                $("#background").html("<div id='error'>Note not found</div>");
-            }
-        }
     } else {
         $("#msg").text(resp.msg);
     }
