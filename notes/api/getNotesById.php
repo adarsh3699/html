@@ -12,7 +12,7 @@
                 //our logic
                 $id = $data["id"];
                 if ($id != "") {
-                    $query = "SELECT * FROM notes WHERE id LIKE $id";
+                    $query = "SELECT * FROM notes WHERE id = $id";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
                         $resp["statusCode"] = 200;
                         $resp["data"] = @mysqli_fetch_assoc($queryRun);

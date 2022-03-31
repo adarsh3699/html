@@ -1,11 +1,17 @@
-var url = document.location.href,
-    params = url.split('?')[1].split('&'),
-    notes = {}, tmp;
-for (var i = 0, l = params.length; i < l; i++) {
-    tmp = params[i].split('=');
-    notes[tmp[0]] = tmp[1];
+let myNotesId
+try {
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        notes = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+        tmp = params[i].split('=');
+        notes[tmp[0]] = tmp[1];
+    }
+    myNotesId= notes.id;
+} catch{
+    $("#bar, #notesArea").css({"display": "none"});
+    $("#error").text("Note not found (404)");
 }
-const myNotesId = notes.id;
 
 async function postApiCall(link, body, functionCall) {
     try {
@@ -21,17 +27,21 @@ async function postApiCall(link, body, functionCall) {
     }
 }
 
-postApiCall("api/getNotesById.php", { id: myNotesId }, function(resp) {
-    if (resp.statusCode == 200) {
-        const title = resp.data?.title;
-        const myNotes = resp.data?.notes;
-        $("#title").val(title);
-        $("#textArea").text(myNotes);
+if (myNotesId) {
+    postApiCall("api/getNotesById.php", { id: myNotesId }, function(resp) {
+        if (resp.statusCode == 200) {
+            $("#title").val(resp.data?.title);
+            $("#textArea").text(resp.data?.notes);
+            if (resp.data == null) {
+                $("#bar, #notesArea").css({"display": "none"});
+                $("#error").text("Note not found");
+            }
+        } else {
+            $("#msg").text(resp.msg);
+        }
+    })
+}
 
-    } else {
-        $("#msg").text(resp.msg);
-    }
-})
 
 function updateNotes(notes, title) {
     const body = { id: myNotesId, notes, title };
