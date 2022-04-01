@@ -4,7 +4,7 @@ function getOptions(array) {
   let html = "";
   for (let i = 0; i < array.length; i++) {
     let option = array[i];
-    html+= ("<option id='"+ i +"'>"+ option +" </option>");
+    html+= ("<option id='"+ i +"' value='"+i+"'>"+ option +" </option>");
   }
   return html;
 }
@@ -16,7 +16,8 @@ $("#cars1").on('change', function() {
  
   let clonedCars = [...cars];
   clonedCars.splice(selectedId, 1);
-
+  var temp = $('#cars1').find(":selected").text();
+  
   $("#cars2").html(getOptions(clonedCars));
   
   $("#cars2").on('change', function() {
@@ -26,8 +27,15 @@ $("#cars1").on('change', function() {
     clonedCars2.splice(selectedId, 1);
   
     $("#cars3").html(getOptions(clonedCars2));
+
+    $("#cars3").on('change', function() {
+      let selectedId = $("#cars3 option:selected").attr("id");
+  
+      let clonedCars3 = [...clonedCars2];
+      clonedCars3.splice(selectedId, 1);
+      clonedCars3.push(temp);
+      $("#cars1").html(getOptions(clonedCars3));
+      $("#cars1").val("4");
+    });
   });
 });
-
-
-
