@@ -23,17 +23,13 @@ body {
     border: unset;
 }
 
-#title img {
-    padding-left: 10px;
-}
-
 #barImg {
     margin-right: 20px;
 }
 
 #barImg img {
 height: 30px;
-padding-right: 20px;
+padding-right: 18px;
 }
 
 #background {
@@ -74,4 +70,21 @@ padding-right: 20px;
     text-align: center;
     color: red;
     font-size: 30px;
+}
+
+/* ...............................mWeb............................. */
+@media screen and (max-width: 480px) {
+    #title {
+        font-size: 19px;
+        margin-left: 15px;
+        width: 220px;
+    }
+
+    #barImg {
+        margin: unset;
+        /* background-color: red; */
+    }
+    #barImg img {
+    padding-right: 12px;
+    }
 }

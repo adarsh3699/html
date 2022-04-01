@@ -23,6 +23,12 @@ body {
     font-size: 105%;
 }
 
+#addButton {
+    position: absolute;
+    right: 20px;
+    top: 8px;
+}
+
 #background {
     background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
     overflow: hidden;
@@ -54,4 +60,24 @@ body {
     user-select: none;
     padding-left: 10px;
     height: 28px;
+}
+
+/* ...............................mWeb............................. */
+@media screen and (max-width: 510px) {
+    #bar {
+        text-align: unset;
+
+   }
+
+    #inputBox {
+        width: 290px;
+        margin: 8px 8px;
+        font-size: 105%;
+    }
+}
+
+@media screen and (max-width: 379px) {
+    #addButton {
+        right: 10px;
+    }
 }

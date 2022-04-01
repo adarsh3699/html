@@ -11,7 +11,7 @@
             if (@is_array($data)) {
                 //our logic
                 $notes = trim($data["notes"]);
-                if ($notes != "") {
+                if (1==1) {
                     $query = "INSERT INTO `notes` (notes) VALUES ('$notes')";
                     if ($queryRun = @mysqli_query($dbLink, $query)) {
                         $resp["id"] = @mysqli_insert_id($dbLink);

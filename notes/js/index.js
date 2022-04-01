@@ -26,7 +26,6 @@ function getNotes() {
         }
     });
 }
-
 getNotes();
 
 function renderList(data) {
@@ -37,26 +36,16 @@ function renderList(data) {
         $("#list").prepend("<div id='" + id +"' onClick='openMyNotes(" + id + ")'> " +title+" <img src='img/delete.png' onClick='event.stopPropagation(); deleteToDO(" + id + ")'></div>");
     }
 }
-
-$("#inputBox").keyup(function(e) {
-    let keyValue = (e.target.value).trim();
-    
-    if (e.keyCode == 13) {
-        if (keyValue != "") {
-            apiCall("http://localhost/html/notes/api/addNotes.php", function(resp) {
-                if (resp.statusCode == 200) {
-                    renderList(resp?.data);
-                    openMyNotes(resp.id);
-                } else {
-                    $("#msg").text(resp.msg);
-                }
-            }, true, {notes: keyValue});
+function addNotes(notes) {
+    apiCall("http://localhost/html/notes/api/addNotes.php", function(resp) {
+        if (resp.statusCode == 200) {
+            renderList(resp?.data);
+            openMyNotes(resp.id);
         } else {
-            $("#msg").text("Enter something");
+            $("#msg").text(resp.msg);
         }
-        $("#inputBox").val("");
-    }
-});
+    }, true, {notes: notes});
+}
 
 function deleteToDO(id) {
     apiCall("http://localhost/html/notes/api/removeNotes.php", function(resp) {
@@ -66,7 +55,7 @@ function deleteToDO(id) {
             $("#msg").text(resp.msg);
         }
     }, true, { id });
-};
+}
 
 function openMyNotes(id) {
     url = window.location.href + "notes.html?id=" + encodeURIComponent(id);
@@ -74,11 +63,26 @@ function openMyNotes(id) {
     // document.location.href = url;
 }
 
+$("#inputBox").keyup(function(e) {
+    let keyValue = (e.target.value).trim();
+    
+    if (e.keyCode == 13) {
+        if (keyValue != "") {
+            addNotes(keyValue);
+        } else {
+            $("#msg").text("Enter something");
+        }
+        $("#inputBox").val("");
+    }
+});
+
+$("#addButton").on("click", function() {
+    addNotes();
+});
 
 window.onfocus = function() {
     getNotes();
 };
-
 
 $(document).on("click", function(e){
     if ($("#msg").text() !== "") {
