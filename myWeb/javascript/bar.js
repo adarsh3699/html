@@ -4,7 +4,6 @@ let back = "";
 if (inFolder == "yes") {
     back = "../";
 }
-console.log(back);
 
 let logo = '<div id="logo"><a href="'+ back +'"><img src="'+ back +'image/logo.png" height="50px"><div><span id="adarsh">Adarsh </span>Suman</div></a></div>';
 let desktopMenu = '<div id="desktopMenu"> <a href="'+ back +'">Home</a> <a href="'+ back +'about/">About</a> <a href="'+ back +'contact/">Contact</a>  </div>';
