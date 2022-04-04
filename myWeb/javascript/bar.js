@@ -97,9 +97,7 @@ $(document).ready(function() {
     loop();
 
     //repeating the animation
-    setInterval(function()
-    {
+    setInterval(function() {
         loop();
     }, 18500);
-
 })
