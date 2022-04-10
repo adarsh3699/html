@@ -4,7 +4,7 @@
 
     $dbHost = "localhost";
     $dbUser = "root";
-    $dbPassword = "";
+    $dbPassword = "root";
     $dbName = "test";
 
     if ($dbLink = @mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName)) {
