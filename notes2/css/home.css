@@ -1,0 +1,83 @@
+body {
+    margin: unset;
+}
+
+#bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    background-color: rgba(24, 23, 23, 0.9);
+    color: rgb(255, 255, 255);
+    width: 100%;
+    z-index: 10;
+    user-select: none;
+}
+
+#inputBox {
+    height: 25px;
+    width: 350px;
+    margin: 8px 0px;
+    font-size: 105%;
+}
+
+#addButton {
+    position: absolute;
+    right: 20px;
+    top: 8px;
+}
+
+#background {
+    background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
+    overflow: hidden;
+    width: 100%;
+    min-height: 100vh;
+}
+
+#msg {
+    margin-top: 60px;
+    text-align: center;
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#list div{
+    display: flex;
+    align-items: center;
+    border: 1px rgb(70, 66, 66) solid;
+    background-color: rgba(29, 28, 28, 0.9);
+    padding-left: 10px;
+    height: 90px;
+    margin-top: 5px;
+    font-size: 150%;
+    color: white;
+}
+
+#list img{
+    user-select: none;
+    padding-left: 10px;
+    height: 28px;
+}
+
+/* ...............................mWeb............................. */
+@media screen and (max-width: 510px) {
+    #bar {
+        text-align: unset;
+
+   }
+
+    #inputBox {
+        width: 290px;
+        margin: 8px 8px;
+        font-size: 105%;
+    }
+}
+
+@media screen and (max-width: 379px) {
+    #addButton {
+        right: 10px;
+    }
+}
