@@ -34,9 +34,8 @@ $("#login").on("click", function() {
                 console.log(userId);
 
                 if (userId) {
-                    url = window.location.href + "home.html?userId=" + encodeURIComponent(userId);
-                    // window.open(url, '_blank').focus();
-                    document.location.href = url;
+                    $.cookie("userId", userId);
+                    document.location.href = window.location.href + "home.html";
                 }
 
             } else{
@@ -69,3 +68,7 @@ $("#signup").on("click", function() {
         $("#updateMsg").text("Please enter all data.");
     }
 })
+
+
+
+console.log($.cookie());
