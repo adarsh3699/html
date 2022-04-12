@@ -21,6 +21,8 @@ async function apiCall(link, functionCall, isGet ,method, body) {
 
 }
 
+console.log($.cookie());
+
 $("#login").on("click", function() {
     let userName = $("#userName").val();
     let password = $("#password").val();
@@ -68,7 +70,3 @@ $("#signup").on("click", function() {
         $("#updateMsg").text("Please enter all data.");
     }
 })
-
-
-
-console.log($.cookie());

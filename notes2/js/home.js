@@ -5,7 +5,7 @@ async function apiCall(link, functionCall, isGet ,method, body) {
         if (isGet === false) {
             apiCallResp = await fetch(link, {
                 
-                method: "post",
+                method: method,
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
             });
@@ -19,6 +19,8 @@ async function apiCall(link, functionCall, isGet ,method, body) {
         $("#msg").text(error);
     }
 }
+
+console.log($.cookie());
 
 function renderList(data) {
     $("#list").html("");
@@ -51,7 +53,6 @@ function addNotes(notes) {
             console.log(resp.msg);
             const id = resp.data.insertId;
             $("#list").prepend("<div id='" + id +"' onClick='openMyNotes(" + id + ")'> " +notes+" <img src='img/delete.png' onClick='event.stopPropagation(); deleteToDO(" + id + ")'></div>");
-            // renderList(resp?.data);
             // openMyNotes(resp.id);
         } else {
             $("#msg").text(resp.msg);
@@ -59,21 +60,15 @@ function addNotes(notes) {
     }, false, "post", {notesTitle: notes});
 }
 
-function deleteToDO(id) {
-    apiCall("http://localhost:3000/api/notes?userId="+ myUserId, function(resp) {
+function deleteToDO(noteId) {
+    apiCall("http://localhost:3000/api/notes/"+ noteId, function(resp) {
         if (resp.statusCode === 200) {
-            renderList(resp?.data);
+            $("#"+noteId).remove();
         } else {
             $("#msg").text(resp.msg);
         }
-    }, true, { id });
+    }, false, "delete");
 }
-
-// function openMyNotes(id) {
-//     url = window.location.href + "notes.html?id=" + encodeURIComponent(id);
-//     window.open(url, '_blank').focus();
-//     // document.location.href = url;
-// }
 
 $("#inputBox").keyup(function(e) {
     let keyValue = (e.target.value).trim();
@@ -88,6 +83,12 @@ $("#inputBox").keyup(function(e) {
         $("#inputBox").val("");
     }
 });
+
+// function openMyNotes(id) {
+//     url = window.location.href + "notes.html?id=" + encodeURIComponent(id);
+//     window.open(url, '_blank').focus();
+//     // document.location.href = url;
+// }
 
 // $("#addButton").on("click", function() {
 //     addNotes("addNotes;");
