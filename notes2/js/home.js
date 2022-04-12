@@ -23,8 +23,7 @@ async function apiCall(link, functionCall, isGet ,method, body) {
 }
 
 function getNotes() {
-    apiCall("http://localhost:3000/api/notes", function(resp) {
-        console.log("resp.msg");
+    apiCall("http://localhost:3000/api/notes?userId=1", function(resp) {
         if (resp.statusCode == 200) {
             renderList(resp?.data);
         } else {
@@ -38,8 +37,8 @@ function renderList(data) {
     $("#list").html("");
     for (let i = 0; i < data.length; i++) {
         const id = data[i]?.id;
-        const title = data[i]?.title;
-        $("#list").prepend("<div id='" + id +"' onClick='openMyNotes(" + id + ")'> " +title+" <img src='img/delete.png' onClick='event.stopPropagation(); deleteToDO(" + id + ")'></div>");
+        const notesTitle = data[i]?.notesTitle;
+        $("#list").prepend("<div id='" + id +"' onClick='openMyNotes(" + id + ")'> " +notesTitle+" <img src='img/delete.png' onClick='event.stopPropagation(); deleteToDO(" + id + ")'></div>");
     }
 }
 
