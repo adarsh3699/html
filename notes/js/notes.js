@@ -8,6 +8,7 @@ try {
         notes[tmp[0]] = tmp[1];
     }
     myNotesId= notes.id;
+    console.log(myNotesId);
 } catch{
     $("#bar, #notesArea").css({"display": "none"});
     $("#error").text("Note not found (404)");

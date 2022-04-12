@@ -1,8 +1,23 @@
+let myUserId;
+try {
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        notes = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+        tmp = params[i].split('=');
+        notes[tmp[0]] = tmp[1];
+    }
+    myUserId = notes.userId;
+    console.log(myUserId);
+} catch (err){
+    console.log(err);
+    $("#bar, #notesArea").css({"display": "none"});
+    $("#error").text("Note not found (404)");
+}
+
 async function apiCall(link, functionCall, isGet ,method, body) {
     try {
         let apiCallResp;
-        console.log("method", method, "isGet", isGet);
-        $("#msg").text("method", method);
 
         if (isGet === false) {
             apiCallResp = await fetch(link, {
@@ -18,12 +33,12 @@ async function apiCall(link, functionCall, isGet ,method, body) {
         const apiJsonResp = await apiCallResp.json();
         functionCall(apiJsonResp);
     } catch (error) {
-        $("#load").text(error);
+        $("#msg").text(error);
     }
 }
 
 function getNotes() {
-    apiCall("http://localhost:3000/api/notes?userId=1", function(resp) {
+    apiCall("http://localhost:3000/api/notes?userId="+ myUserId, function(resp) {
         if (resp.statusCode == 200) {
             renderList(resp?.data);
         } else {
