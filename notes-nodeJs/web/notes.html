@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/notes.css">
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Notes</title>
+</head>
+<body>
+    <div id="bar">
+        <input type="text" id="title">
+        <div id="barImg">
+            <img src="img/delete.png" id="delete" onclick="handleDeleteBtnClick()">
+            <img src="img/save.png" id="save" onclick="handleSaveBtnClick()">
+        </div>
+    </div>
+    
+    <div id="background">
+        <div id="error"></div>
+        <div id="msg"></div>
+        <div id="elementBox">
+            <!-- <div id="notesArea" role="textbox" contenteditable>gfd</div> -->
+            
+            <!-- <div class="toDosBox">
+                <input type="checkbox" id="" class="toDosCheckbox">
+                <div class="todos" role="textbox" contenteditable> sd </div>
+                <img src="img/cross.png" height="21px">
+            </div> -->
+        </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/notes.js"></script>
+</body>
+</html>

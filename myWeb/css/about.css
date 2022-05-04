@@ -1,0 +1,210 @@
+body{
+ margin: unset;   
+color: #f1f1f1;
+}
+
+/*-----blank page animation-------*/
+#myIntro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(32, 30, 30,0.3);
+    border-radius: 5px;
+    margin: 80px auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 90%;
+    height: 50px;
+}
+
+.line-1
+{			    
+    width: 690px;
+    border-right: 2px solid rgba(255,255,255,.75);	    
+    white-space: nowrap;
+    overflow: hidden;	 
+    font-family: mech;
+    font-size: 50px;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px #000000;
+    letter-spacing: 2px;
+}
+
+.line-1 b
+{
+    color: #5cbbce;
+}
+
+.line-1 a
+{
+    color: #f3246f;
+    text-decoration: none;
+}
+
+/*----------------Animation--------------- */
+.anim-typewriter
+{
+     animation: typewriter 4s steps(30) normal,
+                blinkTextCursor .7s ease-in-out infinite
+}
+
+.anim-typewriter-remove
+{
+      animation: typewriter_remove 3.8s steps(30) normal both,
+             blinkTextCursor .7s ease-in-out infinite
+}
+
+.anim-typewriter2
+{
+    width : 550px;
+     animation: typewriter2 3s steps(30) normal,
+                blinkTextCursor .7s ease-in-out infinite
+}
+
+.anim-typewriter-remove2
+{
+      animation: typewriter_remove2 3s steps(30) normal both,
+             blinkTextCursor .7s ease-in-out infinite
+}
+
+@keyframes typewriter
+{
+    from{width: 0;}
+    to{width: 690px;}
+}
+
+@keyframes typewriter_remove
+{
+    from{width: 690px;}
+    to{width: 0px;}
+}
+
+@keyframes typewriter2
+{
+    from{width: 0;}
+    to{width: 550px;}
+}
+
+@keyframes typewriter_remove2
+{
+    from{width: 550px;}
+    to{width: 0px;}
+}
+
+@keyframes blinkTextCursor
+{
+    from{border-right-color: rgba(255,255,255,.75);}
+    to{border-right-color: transparent;}
+}
+
+/*----------------Animation_End--------------- */
+.aboutBox {
+    margin: 20px auto;
+    background-color: rgb(61, 57, 57);
+    border-radius: 5px;
+    width: 80%;
+    padding: 10px;
+}
+
+.title {
+    /* width: 280px; */
+    padding: 7px 10px;
+    margin-bottom: 5px;
+    background-color: rgba(24, 23, 23, 0.781);
+    border-radius: 5px;
+    font-size: 22px ;
+    font-weight: bold;
+}
+
+.img_text {
+    display: flex;
+    font-size: 18px;
+}
+
+ #logoMoblie {
+    display: none;
+ }
+
+.text_img {
+    justify-content: space-between;
+}
+
+.img_text img {
+    border-radius: 5px;
+}
+
+.img_text div {
+    margin: 10px;
+    padding-right: 10px;
+}
+
+#nextDiv {
+    margin-top: 20px;
+}
+
+/* ...............................mWeb............................. */
+/*tablet*/
+@media screen and (max-width: 1150px) {
+    .aboutBox {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    /*----------------mWeb_Animation--------------- */
+     #myIntro {
+        width: 85%;
+        margin-top: 60px;
+        height: 40px;
+    }
+
+    .line-1{
+        font-size: 26px ;
+        width: 350px;
+        letter-spacing: 1.5px;
+    }
+
+    .anim-typewriter2
+    {
+        width : 285px;
+    }
+
+    @keyframes typewriter
+    {
+        from{width: 0;}
+        to{width: 350px ; }
+    }
+
+    @keyframes typewriter_remove
+    {
+        from{width: 350px ;}
+        to{width: 0px;}
+    }
+
+    @keyframes typewriter2
+    {
+        from{width: 0;}
+        to{width: 285px;}
+    }
+
+    @keyframes typewriter_remove2
+    {
+        from{width: 285px;}
+        to{width: 0px;}
+    }
+
+    /*----------------mWeb_Animation_End--------------- */
+    .img_text {
+        display: block;
+        text-align: center;
+    }
+
+    #logoMoblie{
+        display: inline;
+        justify-content: center;
+    }
+
+    #logoPc {
+        display: none;
+    }
+}

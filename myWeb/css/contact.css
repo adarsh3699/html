@@ -1,0 +1,115 @@
+body {
+    margin: unset;
+    color: #f1f1f1;
+}
+
+#background {
+    padding-top: 100px;
+}
+
+#title {
+    width: 50%;
+    margin: auto;
+    padding: 7px 0px !important;
+    background-color: rgba(24, 23, 23, 0.781);
+    border-radius: 5px;
+    font-size: 22px ;
+    font-weight: bold;
+    text-align: center;
+}
+
+#msgUs {
+    margin: 10px auto;;
+    background-color: rgb(61, 57, 57);
+    border-radius: 5px;
+    width: 60%;
+    text-align: center;
+}
+
+#email, #textArea {
+    margin-top: 18px;
+    padding-left: 5px;
+    max-width: 95%;
+}
+
+#email {
+    height: 22px;
+    width: 220px;
+}
+
+#confirmEmail, #confirmMsg {
+    color: rgb(255, 129, 129);
+}
+
+#send {
+    background-color: #e09f63;
+    margin-bottom: 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 2px;
+    font-size: 15px;
+}
+
+.disableBtn {
+    background-color: gray !important;
+    pointer-events: none;
+}
+
+#contact {
+    margin: 10px auto;;
+    background-color: rgb(61, 57, 57);
+    border-radius: 5px;
+    width: 60%;
+    padding-left: 50px;
+}
+
+.subTitle {
+padding-top: 20px;
+margin-bottom: 10px;
+font-size: 25px;
+border-bottom: 1px solid #f1f1f1;
+width: fit-content;
+}
+
+#contact a {
+    display: flex;
+    align-items: center;
+    padding: 7px 0px;
+    width: fit-content;
+}
+
+#contact img {
+    height: 30px;
+}
+
+#git {
+    fill: white;
+}
+
+#contact div div {
+    padding-left: 10px;
+}
+
+/*------------------mWebBar-------------------*/
+@media screen and (max-width: 700px) {
+    #title {
+        width: 80%;
+    }
+
+    #msgUs {
+        width: 90%;
+    }
+
+    #email {
+        width: 180px;
+    }
+
+    #textArea {
+       height: 200px;
+       width: 290px;
+    }
+
+    #contact {
+        width: 80%;
+    }
+}
