@@ -6,6 +6,10 @@ img {
     user-select: none;
 }
 
+.noteIdNotFound {
+    display: none !important;
+}
+
 #bar {
     position: fixed;
     top: 0;
@@ -89,6 +93,8 @@ padding-right: 18px;
     resize: vertical;
     outline: unset;
     width: 94%;
+    background-color: unset;
+    border: unset;
 }
 
 .todos:focus {
