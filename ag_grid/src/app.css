@@ -1,0 +1,7 @@
+.priceLessThan40000 {
+    background-color: green;
+}
+
+.priceGreaterThan40000 {
+    background-color: rgb(221, 76, 76);
+}
