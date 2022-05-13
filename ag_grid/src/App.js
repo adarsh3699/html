@@ -4,11 +4,12 @@ import "./app.css"
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState} from 'react';
 
 function App() {
-    const [gridApi, setGridApi]=useState()
-    let selectedData;
+    const [gridApi, setGridApi]=useState(null)
+    const [gridColumnApi, setGridColumnApi] = useState(null);
+    const [isColumnHiden,setIsColumnHiden] = useState(false)
 
     const [rowData, setRowData] = useState([
         { make: "brezza", model: "vitara", price: "12 Lakhs" }
@@ -36,7 +37,7 @@ function App() {
         alert(event.data.make + " row clicked")
     }
 
-    const defaultColDef = { sortable: true, filter: true, editable: true, floatingFilter: true };
+    const defaultColDef = { sortable: true, filter: true, editable: true, floatingFilter: true };  //flex:1
 
     // const cellClickedListener = useCallback(function (event) { //handel cell click
     //     console.log('cellClicked', event);
@@ -49,33 +50,36 @@ function App() {
                 params.api.applyTransaction({ add: resp })
             })
             params.api.paginationSetPageSize(10)
-        setGridApi(params.api)
+            setGridApi(params.api);
+            setGridColumnApi(params.columnApi);
     }
 
     const handleExportAll = function () {
         gridApi.exportDataAsCsv();
     }
 
-    const onSelectionChanged=(event)=>{
-        // selectedData =  event.api.getSelectedRows();
-        console.log(event);
-    }
+    // const onSelectionChanged=(event)=>{
+    //     console.log(event);
+    // }
 
     const onPaginationChange=(pageSize)=>{
         gridApi.paginationSetPageSize(Number(pageSize))
     }
+    
+    function hideColumn() {
+        gridColumnApi.setColumnVisible('price', isColumnHiden) 
+        setIsColumnHiden(!isColumnHiden);
+        gridApi.sizeColumnsToFit()
+    }
+
+    function onSearchBoxTextChange(e) {
+        gridApi.setQuickFilter(e.target.value)
+    }
 
     return (
         <div>
-            <button onClick={() => handleExportAll()}>Export All</button>
-            <select onChange={(e) => onPaginationChange(e.target.value)}>
-                <option value='10'>10</option>
-                <option value='25'>25</option>
-                <option value='50'>50</option>
-                <option value='100'>100</option>
-            </select>
-
-            <div className="ag-theme-alpine-dark" style={{ height: "95vh", width: "100%" }}>
+            <input type="search" id='sreachBox' placeholder="search somethings..." onChange={onSearchBoxTextChange} />
+            <div className="ag-theme-alpine-dark" style={{ height: "92vh", width: "100%" }}>
                 <AgGridReact
                     // rowData={rowData}
                     columnDefs={columnDefs}
@@ -96,6 +100,19 @@ function App() {
                 // paginationPageSize= {30}
                 // paginationAutoPageSize= {true}
                 />
+            </div>
+            <div id='btns'>
+                <button id='exportBtn' onClick={() => handleExportAll()}>Export All</button>
+                <button id='hideBtn' onClick={hideColumn}>Hide price column</button>
+                <div id='selectionArea'>
+                    <div>Set Pagination Size</div>
+                    <select onChange={(e) => onPaginationChange(e.target.value)}>
+                        <option value='10'>10</option>
+                        <option value='25'>25</option>
+                        <option value='50'>50</option>
+                        <option value='100'>100</option>
+                    </select>
+                </div>
             </div>
         </div>
     );
