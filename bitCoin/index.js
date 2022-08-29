@@ -7,7 +7,6 @@ async function apiCall(link, functionCall) {
         $("#load").text(error);
     }
 }
-$("#loading").text("Loading...");
 
 apiCall("https://api.coindesk.com/v1/bpi/currentprice.json", function (data) {
     $("#loading").remove();
@@ -19,7 +18,7 @@ apiCall("https://api.coindesk.com/v1/bpi/currentprice.json", function (data) {
         $("#currBtns").append("<button curr='" + bpi[i] + "'>" + bpi[i] + " currency</button>");
     }
     $("#currBtns button").on("click", function () {
-        const curr = $(this).attr("curr"); // $(this).text();
+        const curr = $(this).attr("curr");
         $("#rate").text(data?.bpi?.[curr]?.rate);
     })
 });
