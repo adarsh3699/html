@@ -1,0 +1,85 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 5px 0;
+  background-color: #121212;
+  border-width: 0;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.3);
+  border-bottom-width: thin;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  width: 100%;
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+}
+
+#iconMenuBtn {
+  margin: 0 5px 0 20px;
+}
+
+#name {
+  font-size: 16px;
+  font-weight: 550;
+}
+
+#searchBox {
+  width: 550px;
+  height: 30px;
+  background: rgb(73, 73, 73);
+  padding-left: 10px;
+  color: white;
+  border: 1px solid grey;
+  border-radius: 3px;
+  font-weight: 550;
+  outline-color: #121212;
+}
+
+.addNoteBtn {
+  margin-right: 20px !important;
+  padding: 4px 11px !important;
+  border-radius: 7px !important;
+  font-weight: 550 !important;
+}
+
+@media screen and (max-width: 945px) {
+  #searchBox {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #searchBox {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 615px) {
+  #name {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  #iconMenuBtn {
+    margin: 0 0 0 4px;
+  }
+
+  .addNoteBtn {
+    margin-right: 10px !important;
+    padding: 5px 7px !important;
+    font-size: 11px !important;
+  }
+
+  #searchBox {
+    width: 200px;
+  }
+}
