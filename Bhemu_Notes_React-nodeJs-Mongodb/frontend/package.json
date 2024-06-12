@@ -5,17 +5,16 @@
   "author": {
     "email": "adarsh3699@gmail.com",
     "name": "Adarsh Suman",
-    "url": "https://bhemu.me"
+    "url": "https://oldnotes.bhemu.me"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@mui/icons-material": "^5.15.19",
-    "@mui/material": "^5.15.19",
+    "@mui/icons-material": "^5.15.20",
+    "@mui/material": "^5.15.20",
     "@react-oauth/google": "^0.12.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-google-login": "^5.2.2",
     "react-hot-keys": "^2.7.3",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
