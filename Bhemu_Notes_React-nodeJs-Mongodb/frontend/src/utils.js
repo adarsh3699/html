@@ -1,7 +1,7 @@
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
-const apiBaseUrl = "https://notes-api.bhemu.me/";
+const apiBaseUrl = "https://bhemu-notes-api.onrender.com/";
 // const apiBaseUrl = "http://localhost:4000/";
 
 // variables for setting cookie expiratiom tym
